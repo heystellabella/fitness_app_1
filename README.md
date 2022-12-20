@@ -54,7 +54,7 @@ ___
 4. Design Inspiration - ✓
 
 [ ] Set-up & API/Routes
-1. Set up of folders (Controllers, DB, Static)
+1. Set up of folders (Controllers, DB, Static) - ✓
 2. Create Database and Tables - ✓
 3. API Set Up 
 4. Basic routes for each link/page in wireframe (Make sure they link and work)
