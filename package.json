@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon"
+    "start": "nodemon",
+    "create_db": "createdb gofit && psql -d gofit < schema.sql && psql -d gofit < seed.sql"
   },
   "repository": {
     "type": "git",
