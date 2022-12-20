@@ -47,17 +47,16 @@ ___
 
 ## Project Plan
 
-[ ] Ideation and Planning
+[✓] Ideation and Planning
 1. Selecting Project Management Tools (Using Trello) - ✓
-2. User Stories & Features (Due 20/12)
-3. Storyboards & Wireframes - (for now ✓)
+2. User Stories & Features - ✓
+3. Storyboards & Wireframes - ✓
 4. Design Inspiration - ✓
 
 [ ] Set-up & API/Routes
 1. Set up of folders (Controllers, DB, Static)
-2. Create Database and Tables (Due 20/12)
+2. Create Database and Tables - ✓
 3. API Set Up 
 4. Basic routes for each link/page in wireframe (Make sure they link and work)
-
 
 ✓✓✓
