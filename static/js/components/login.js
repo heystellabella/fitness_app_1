@@ -7,6 +7,7 @@ loginForm.innerHTML = `
         <input type="text" name="email" placeholder="email"/><br>
         <input type="password" name="password" placeholder="password"/><br>
         <button>Log in</button><br>
+        <a href="/sign-up.html">Create an account</a>
 `;
 
 loginFormContainer.appendChild(loginForm);

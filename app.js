@@ -43,6 +43,38 @@ app.post("/api/login-session", (req, res) => {
     })
 });
 
+app.get("/api/accounts", (req, res) => {
+    const sql = "SELECT * FROM users;"
+    db.query(sql).then(({ rows }) => {
+        res.json({ users: rows })
+    })
+})
+
+app.post("/api/accounts", (req, res) => {
+    const { name, email, password } = req.body
+
+    if (name == "" && email == "" & password == "") {
+        res.json({
+            message: "Please enter your name, email and password."
+        })
+    } else if (name && email && password.length < 8) {
+        res.json({
+            message: "Password too short - Must be at least 8 characters"
+        })
+    } else {
+        const sql = "INSERT INTO users (f_name, email, password) VALUES ($1, $2, $3)"
+        const params = [req.body.f_name, email, password]
+        console.log(sql, params)
+
+        
+        
+        db.query(sql, params).then((dbResult) => {
+            res.json({ message: "Account created successfully" })
+            
+        })
+    }
+
+});
 
 
 app.listen(PORT, () => {

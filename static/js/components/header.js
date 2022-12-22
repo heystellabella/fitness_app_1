@@ -8,6 +8,7 @@ export function renderHeader() {
                 <li id="create-group-button"><i class="fa-solid fa-people-group"></i></li>
                 <li id="update-goals-button"><i class="fa-solid fa-bullseye"></i></li>
                 <li id="your-activty-button"><i class="fa-solid fa-chart-line"></i></li>
+                <li id="view-calorie-button">View Calories</li>
                 <li id="my-profile-button"><i class="fa-regular fa-user"></i></li>
             </ul>
         </nav>
