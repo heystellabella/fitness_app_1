@@ -1,0 +1,64 @@
+body {
+    background-color: rgb(225, 225, 225);
+}
+
+/* Navbar */
+.sidenav {
+  height: 90%;
+  width: 30px;
+  position: fixed;
+  /* z-index: 1; */
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  margin-left: 20px;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  background-color: white;
+  padding-bottom: 20px;
+  border-radius: 7.5px;
+  box-shadow: 2px 2px 2px 2px rgba(146, 146, 146, 0.2);
+}
+
+.sidenav > li {
+    margin: 0 auto;
+    text-decoration: none;
+    list-style: none;
+    color: lightslategray;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: -15px;
+    margin-top: 30px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+i {
+    font-size: 20px;
+}
+
+.sidenav li:last-child {
+    margin-top: auto;
+    color: blue;
+}
+
+.profile-description-container {
+    background-color: white;
+    border-radius: 7.5px;
+    width: 700px;
+    height: 200px;
+    margin-left: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 2px 2px 2px 2px rgba(146, 146, 146, 0.2);
+}
+
+.profile-description-container > h2, p {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.profile-description-container p {
+    font-size: 12px;
+}
