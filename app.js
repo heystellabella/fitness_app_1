@@ -31,13 +31,13 @@ app.post("/api/login-session", (req, res) => {
     const sql = "SELECT email, password FROM users WHERE email = $1"
     db.query(sql, email).then((dbResult) => {
         if (dbResult.rows.length === 0) {
-            res.status(404).json({error: "User not found"})
+            res.status(404).json({message: "User not found"})
         } else {
             const user = dbResult.rows[0]
             if (user.password === password) {
                 res.json({message: "Login successful"})
             } else {
-                res.status(401).json({error: "Incorrect password"})
+                res.status(401).json({message: "Invalid password"})
             }
         }
     })

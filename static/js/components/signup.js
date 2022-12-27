@@ -5,7 +5,7 @@ signUpForm.innerHTML = `
         <section id="errors"></section>
         <div class="form-container" id="form-container">
             <h1>GoFit</h1>
-            <h2>Sign up to get started</h2>
+            <h2>Sign up to get started.</h2>
             <p>Track progress toward your nutrition, fitness and weight loss with your mates.</p>
             <div class="sign-up-1" id="sign-up-1">
                 <input type="text" name="name" placeholder="Name" required /><br>
@@ -23,7 +23,7 @@ signUpForm.innerHTML = `
                 <button class="submit">Sign Up</button><br>
             </div>
         </div>
-        <p>Already have an account? <a href="/sign-up.html">Log in</a></p>
+        <p>Already have an account? <a href="/login.html">Log in</a></p>
 `
 
 window.onload = function() {

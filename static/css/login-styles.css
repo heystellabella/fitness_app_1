@@ -98,7 +98,10 @@ input:focus {
     font-size: 12.5px;
 } 
 
-
+.error-message {
+    color: red;
+    font-size: 12.5px;
+}
 
 
 
