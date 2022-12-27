@@ -1,4 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+}
+
+.main-container {
+    width: 100%;
+    text-align: center;
+}
+
+.flex-form-parent-element {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.flex-child-element {
+    flex: 1;
+}
+
+.flex-child-element:first-child {
+    margin-top: 50px;
+
+}
+
+.image-container {
+    height: 100%;
+    width: 100%;
+}
+
+.image-container > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+#login-form {
+    margin-top: 150px;
+}
+
+#login-form > * {
+    margin: 15px;
+}
+
+#login-form > h1 {
+    font-size: 35px;
+}
+
+#login-form > h2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#login-form > input {
+    width: 85%;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
+
+input::placeholder {
+    text-transform: capitalize;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px #719ECE;
+}
+
+.submit {
+    width: 84.9%;
+    height: 40px;
+    background-color: #FEE58E;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#login-form > p {
+    margin-top: 20px;
+    font-size: 12.5px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* V1 STYLES */
+
+/* html, body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -22,7 +139,7 @@ body {
 #login-form {
     text-align: center;
     padding-top: 20px;
-    /* border: 1px solid #CCC; */
+    border: 1px solid #CCC;
 }
 
 input {
@@ -48,4 +165,10 @@ input:focus {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
+
+#login-form > p {
+    margin-top: 30px;
+    font-size: 12.5px;
+} */

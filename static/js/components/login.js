@@ -3,12 +3,13 @@ const loginForm = document.createElement('form');
 loginForm.setAttribute('method', 'POST');
 loginForm.setAttribute('id', 'login-form');
 loginForm.innerHTML = `
-        <h1>Login</h1>
+        <h1>GoFit</h1>
+        <h2>Welcome back!</h2>
         <section id="errors"></section>
-        <input type="text" name="email" placeholder="email address"/><br>
+        <input type="text" name="email" placeholder="email"/><br>
         <input type="password" name="password" placeholder="password"/><br>
         <button class="submit">Log in</button><br>
-        <p>Not a member? <a href="/sign-up.html">Sign up now</a></p>
+        <p>Don't have an account? <a href="/sign-up.html">Sign Up</a></p>
 `;
 
 loginFormContainer.appendChild(loginForm);
