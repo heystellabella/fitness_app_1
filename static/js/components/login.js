@@ -4,7 +4,7 @@ loginForm.setAttribute('method', 'POST');
 loginForm.setAttribute('id', 'login-form');
 loginForm.innerHTML = `
         <h1>GoFit</h1>
-        <h2>Welcome back!</h2>
+        <h2>Welcome back. Let's get it.</h2>
         <section id="errors"></section>
         <input type="text" name="email" placeholder="email"/><br>
         <input type="password" name="password" placeholder="password"/><br>

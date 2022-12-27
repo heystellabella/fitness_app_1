@@ -3,22 +3,27 @@ const signUpForm = document.createElement('form')
 signUpForm.setAttribute('method', 'POST')
 signUpForm.innerHTML = `
         <section id="errors"></section>
-        <div class="sign-up-1">
-            <input type="text" name="name" placeholder="Name" required /><br>
-            <input type="text" name="email" placeholder="Email" required /><br>
-            <input type="password" name="password" placeholder="Password" required /><br>
-            <input type="password" name="password2" placeholder="Confirm Password"/><br>
-            <button type="button" id="next">Next</button><br>
+        <div class="form-container" id="form-container">
+            <h1>GoFit</h1>
+            <h2>Sign up to get started</h2>
+            <p>Track progress toward your nutrition, fitness and weight loss with your mates.</p>
+            <div class="sign-up-1" id="sign-up-1">
+                <input type="text" name="name" placeholder="Name" required /><br>
+                <input type="text" name="email" placeholder="Email" required /><br>
+                <input type="password" name="password" placeholder="Password" required /><br>
+                <input type="password" name="password2" placeholder="Confirm Password"/><br>
+                <button type="button" class="next-button" id="next">Next</button><br>
+            </div>
+            <div class="sign-up-2" id="sign-up-2">
+                <input type="text" name="username" placeholder="Username" required/><br>
+                <input type="text" name="bio" placeholder="Bio"/><br>
+                <input type="text" name="weight_goal" placeholder="Weight Goal" required/><br>
+                <input type="text" name="activity_goal" placeholder="Activity Goal" required/><br>
+                <input type="text" name="calorie_goal" placeholder="Calorie Goal" required/><br>
+                <button class="submit">Sign Up</button><br>
+            </div>
         </div>
-        <div class="sign-up-2">
-            <input type="text" name="username" placeholder="Username" required/><br>
-            <input type="text" name="bio" placeholder="Bio"/><br>
-            <input type="text" name="weight_goal" placeholder="Weight Goal" required/><br>
-            <input type="text" name="activity_goal" placeholder="Activity Goal" required/><br>
-            <input type="text" name="calorie_goal" placeholder="Calorie Goal" required/><br>
-            <button>Sign Up</button><br>
-        </div>
-        <a href="/sign-up.html">Sign in</a>
+        <p>Already have an account? <a href="/sign-up.html">Log in</a></p>
 `
 
 window.onload = function() {
