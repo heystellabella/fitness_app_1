@@ -1,7 +1,10 @@
+require('dotenv').config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const db = require("./db/db")
 const bcrypt = require("bcrypt")
+const expressSession = require("express-session")
+const pgSession = require("connect-pg-simple")(expressSession)
 
 const app = express()
 
@@ -10,6 +13,14 @@ const PORT = 3000
 //Middleware
 app.use(express.static("static"))
 app.use(bodyParser.json())
+app.use(expressSession({
+    store: new pgSession({
+        pool: db,
+        createTableIfMissing: true,
+    }),
+    secret: process.env.SECRET
+}))
+
 
 app.get("/api/profile", (req, res) => {
     const sql = "SELECT * FROM users"
@@ -42,6 +53,8 @@ app.post("/api/login-session", (req, res) => {
             }
 
             if (isValidPassword(password, user.password)) {
+                req.session.email = email
+                
                 res.json({message: "Login successful"})
             } else {
                 res.status(401).json({message: "Invalid password"})
