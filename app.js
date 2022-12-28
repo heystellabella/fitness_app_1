@@ -51,23 +51,21 @@ app.get("/api/accounts", (req, res) => {
 })
 
 app.post("/api/accounts", (req, res) => {
-    const { name, email, password } = req.body
+    const { f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal } = req.body
 
-    if (name == "" && email == "" & password == "") {
-        res.json({
+    if (f_name == "" && email == "" & password == "") {
+        res.status(400).json({
             message: "Please enter your name, email and password."
         })
-    } else if (name && email && password.length < 8) {
-        res.json({
+    } else if (f_name && email && password.length < 8) {
+        res.status(400).json({
             message: "Password too short - Must be at least 8 characters"
         })
     } else {
-        const sql = "INSERT INTO users (f_name, email, password) VALUES ($1, $2, $3)"
-        const params = [req.body.f_name, email, password]
+        const sql = "INSERT INTO users (f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+        const params = [f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal]
         console.log(sql, params)
 
-        
-        
         db.query(sql, params).then((dbResult) => {
             res.json({ message: "Account created successfully" })
             
