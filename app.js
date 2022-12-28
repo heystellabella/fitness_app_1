@@ -65,9 +65,13 @@ app.post("/api/accounts", (req, res) => {
         res.status(400).json({
             message: "Passwords do not match. Try again."
         })
-    } else if (!email.includes('@')) {
+    } else if (!email.includes('@') || !email.includes('.')) {
         res.status(400).json({
             message: "Please enter a valid email address."
+        })
+    } else if (isNaN(weight_goal) || isNaN(activity_goal) || isNaN(calorie_goal)) {
+        res.status(400).json({
+            message: "Please enter a number for your weight goal, activity goal and calorie goal."
         })
     } else {
         const sql = "INSERT INTO users (f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
