@@ -8,12 +8,12 @@ signUpForm.innerHTML = `
             <p>Track progress toward your nutrition, fitness and weight loss with your mates.</p>
             <section id="errors"></section>
             <div class="sign-up-1" id="sign-up-1">
-                <input type="text" name="f_name" placeholder="First Name" required /><br>
+                <input type="text" name="f_name" placeholder="First Name" /><br>
                 <input type="text" name="l_name" placeholder="Last Name"  /><br>
-                <input type="text" name="email" placeholder="Email" required /><br>
-                <input type="password" name="password" placeholder="Password" required /><br>
+                <input type="text" name="email" placeholder="Email" /><br>
+                <input type="password" name="password" placeholder="Password" /><br>
                 <input type="password" name="password2" placeholder="Confirm Password"/><br>
-                <button type="button" class="next-button" id="next">Next</button><br>
+                <button type="button" class="next-button" id="next-button">Next</button><br>
             </div>
             <div class="sign-up-2" id="sign-up-2">
                 <input type="text" name="username" placeholder="Username" required/><br>
@@ -21,7 +21,7 @@ signUpForm.innerHTML = `
                 <input type="text" name="weight_goal" placeholder="Weight Goal" required/><br>
                 <input type="text" name="activity_goal" placeholder="Activity Goal" required/><br>
                 <input type="text" name="calorie_goal" placeholder="Calorie Goal" required/><br>
-                <button type="button" class="back-button" id="back">Back</button><br>
+                <button type="button" class="back-button" id="back-button">Back</button><br>
                 <button class="submit">Sign Up</button><br>
             </div>
         </div>
@@ -32,12 +32,12 @@ window.onload = function() {
     const signUpForm1 = document.querySelector('.sign-up-1')
     const signUpForm2 = document.querySelector('.sign-up-2')
     signUpForm2.style.display = 'none'
-    const nextButton = document.getElementById('next')
+    const nextButton = document.getElementById('next-button')
     nextButton.addEventListener('click', () => {
         signUpForm1.style.display = 'none'
         signUpForm2.style.display = 'block'
     })
-    const backButton = document.getElementById('back')
+    const backButton = document.getElementById('back-button')
     backButton.addEventListener('click', () => {
         signUpForm1.style.display = 'block'
         signUpForm2.style.display = 'none'
@@ -57,6 +57,7 @@ function submitSignUpForm(event) {
         l_name: signUpFormData.get('l_name'),
         email: signUpFormData.get('email'),
         password: signUpFormData.get('password'),
+        password2: signUpFormData.get('password2'),
         username: signUpFormData.get('username'),
         bio: signUpFormData.get('bio'),
         weight_goal: signUpFormData.get('weight_goal'),

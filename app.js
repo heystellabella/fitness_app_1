@@ -51,15 +51,23 @@ app.get("/api/accounts", (req, res) => {
 })
 
 app.post("/api/accounts", (req, res) => {
-    const { f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal } = req.body
+    const { f_name, l_name, email, password, password2, username, bio, weight_goal, activity_goal, calorie_goal } = req.body
 
-    if (f_name == "" && email == "" & password == "") {
+    if (f_name == "" && email == "" && password == "") {
         res.status(400).json({
             message: "Please enter your name, email and password."
         })
     } else if (f_name && email && password.length < 8) {
         res.status(400).json({
-            message: "Password too short - Must be at least 8 characters"
+            message: "Password too short - Must be at least 8 characters."
+        })
+    } else if (password !== password2) {
+        res.status(400).json({
+            message: "Passwords do not match. Try again."
+        })
+    } else if (!email.includes('@')) {
+        res.status(400).json({
+            message: "Please enter a valid email address."
         })
     } else {
         const sql = "INSERT INTO users (f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"

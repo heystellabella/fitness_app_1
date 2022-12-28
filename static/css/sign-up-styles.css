@@ -82,7 +82,7 @@ input:focus {
     box-shadow: 0 0 5px #719ECE;
 }
 
-.submit, .next-button {
+.submit, .next-button, .back-button {
     width: 84.9%;
     height: 40px;
     background-color: #FEE58E;
@@ -91,6 +91,10 @@ input:focus {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 30px;
+}
+
+#back-button {
+    margin-top: 20px;
 }
 
 #form-container, p {
