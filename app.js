@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const db = require("./db/db")
+const bcrypt = require("bcrypt")
 
 const app = express()
 
@@ -25,6 +26,7 @@ app.get("/api/profile/:id", (req, res) => {
     })
 })
 
+
 app.post("/api/login-session", (req, res) => {
     const email = [req.body.email]
     const password = req.body.password
@@ -34,7 +36,12 @@ app.post("/api/login-session", (req, res) => {
             res.status(404).json({message: "User not found"})
         } else {
             const user = dbResult.rows[0]
-            if (user.password === password) {
+            
+            function isValidPassword(password, passwordHash) {
+                return bcrypt.compareSync(password, passwordHash)
+            }
+
+            if (isValidPassword(password, user.password)) {
                 res.json({message: "Login successful"})
             } else {
                 res.status(401).json({message: "Invalid password"})
@@ -52,6 +59,12 @@ app.get("/api/accounts", (req, res) => {
 
 app.post("/api/accounts", (req, res) => {
     const { f_name, l_name, email, password, password2, username, bio, weight_goal, activity_goal, calorie_goal } = req.body
+
+    function generateHash(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
+    }
+
+    const passwordHash = generateHash(password)
 
     if (f_name == "" && email == "" && password == "") {
         res.status(400).json({
@@ -75,8 +88,7 @@ app.post("/api/accounts", (req, res) => {
         })
     } else {
         const sql = "INSERT INTO users (f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
-        const params = [f_name, l_name, email, password, username, bio, weight_goal, activity_goal, calorie_goal]
-        console.log(sql, params)
+        const params = [f_name, l_name, email, passwordHash, username, bio, weight_goal, activity_goal, calorie_goal]
 
         db.query(sql, params).then((dbResult) => {
             res.json({ message: "Account created successfully" })
