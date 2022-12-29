@@ -2,14 +2,23 @@ export function renderHeader() {
     const header = document.getElementById('header-container')
     header.innerHTML = `
         <nav id="header-nav">
-            <ul id="navlist" class="sidenav">
-                <li id="home-button"><i class="fa-solid fa-house"></i></li>
-                <li id="add-activity-button"><i class="fa-solid fa-plus"></i></li>
-                <li id="create-group-button"><i class="fa-solid fa-people-group"></i></li>
-                <li id="update-goals-button"><i class="fa-solid fa-bullseye"></i></li>
-                <li id="your-activty-button"><i class="fa-solid fa-chart-line"></i></li>
-                <li id="view-calorie-button">View Calories</li>
-                <li id="my-profile-button"><i class="fa-regular fa-user"></i></li>
+            <ul id="mainnav" class="mainnav">
+                <li id="about">About</li>
+                <li id="home-logo">GoFit</li>
+                <div id="cta" class="cta">
+                    <li id="cta-join-now"><a href="./sign-up.html">Join Now</li>
+                    <li id="cta-login"><a href="./login.html">Log In</li></a>
+                </div>
+            </ul>
+            <div class="spacer"></div>
+            <ul id="subnav" class="subnav">
+                <li id="home-button"><i class="fa-solid fa-house"></i>Home</li>
+                <li id="add-activity-button"><i class="fa-solid fa-plus"></i>Add Activity</li>
+                <li id="create-group-button"><i class="fa-solid fa-people-group"></i>Groups</li>
+                <li id="update-goals-button"><i class="fa-solid fa-bullseye"></i>Update Goals</li>
+                <li id="your-activty-button"><i class="fa-solid fa-chart-line"></i>Your Activity</li>
+                <li id="view-calorie-button"><i class="fa-solid fa-heart"></i>View Calories</li>
+                <li id="my-profile-button"><i class="fa-regular fa-user"></i>My Profile</li>
             </ul>
         </nav>
 

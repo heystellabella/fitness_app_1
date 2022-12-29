@@ -1,13 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background-color: rgb(225, 225, 225);
 }
 
 /* Navbar */
+.mainnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #171C21;
+    color: white;
+    height: 60px;
+    padding: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.mainnav > li {
+    list-style: none;
+}
+
+.mainnav > li:hover, .cta:hover {
+    cursor: pointer;
+}
+
+#home-logo {
+    margin-left: 40px;
+    font-size: 18px;
+}
+
+.cta {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.cta > li:nth-child(1) {
+    margin-right: 30px;
+}
+
+#cta-join-now {
+    background-color: #FEE58E;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#cta-join-now > a {
+    text-decoration: none;
+    color: black;
+}
+
+#cta-login {
+    padding: 10px 5px;
+}
+
+#cta-login > a {
+    text-decoration: none;
+    color: white;
+}
+
+.spacer {
+    background-color: #171C21;
+    height: 12.5px;
+}
+
+.subnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 95%;
+    height: 60px;
+    padding: 25px;
+    margin-top: -12.5px;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.subnav > li {
+    list-style: none;
+    font-size: 12px;
+}
+
+.subnav > li:hover {
+    cursor: pointer;
+}
+
+.subnav > li > i {
+    margin-right: 5px;
+}
+
+.profile-description-container {
+    background-color: white;
+    border-radius: 7.5px;
+    width: 700px;
+    height: 200px;
+    margin-left: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 2px 2px 2px 2px rgba(146, 146, 146, 0.2);
+    margin-top: 15px;
+}
+
+
+
+/* 
 .sidenav {
   height: 90%;
   width: 30px;
   position: fixed;
-  /* z-index: 1; */
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -61,4 +173,4 @@ i {
 
 .profile-description-container p {
     font-size: 12px;
-}
+} */
