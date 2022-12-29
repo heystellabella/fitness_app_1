@@ -109,6 +109,17 @@ body {
     margin-right: 5px;
 }
 
+/* ------------------ FOOTER COMPONENT ------------------ */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    height: 60px;
+    background-color: #171C21;
+}
+
 
 /* ------------------------------------------------------ */
 /* ------------------ PROFILE PAGE ---------------------- */
@@ -187,6 +198,10 @@ body {
 
 .user-details > h2:nth-child(2) > input {
     margin-left: 310px;
+}
+
+.user-details > h2 > input:focus {
+    outline: none;
 }
 
 .save-details {

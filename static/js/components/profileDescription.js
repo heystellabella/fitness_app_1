@@ -21,11 +21,11 @@ export function renderProfileDescription() {
                     <div class="gradient-background"></div>
                     <div class="profile-picture"></div>
                     <div class="user-details">
-                        <h2>Username<input type="text" name="username" value="${username}" /></h2>
-                        <h2>Bio<input type="text" name="bio" value="${bio}" /></h2>
-                        <h2>Weight Goal<input type="text" name="weightGoal" value="${weightGoal}" /></h2>
-                        <h2>Activity Goal<input type="text" name="activityGoal" value="${activityGoal}" /></h2>
-                        <h2>Calorie Goal<input type="text" name="calorieGoal" value="${calorieGoal}" /></h2>
+                        <h2>Username<input type="text" name="username" value="${username}" placeholder="Update your username"/></h2>
+                        <h2>Bio<input type="text" name="bio" value="${bio}" placeholder="e.g. I like long walks on the beach"/></h2>
+                        <h2>Weight Goal<input type="text" name="weightGoal" value="${weightGoal}" placeholder="Enter in KGs"/></h2>
+                        <h2>Activity Goal<input type="text" name="activityGoal" value="${activityGoal}" placeholder="How many times a week?"/></h2>
+                        <h2>Calorie Goal<input type="text" name="calorieGoal" value="${calorieGoal}" placeholder="What is your calorie goal?"/></h2>
                         <button class="save-details">Save</button>
                     </div>
                 </div>
