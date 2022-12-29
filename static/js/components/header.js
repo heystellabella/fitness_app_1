@@ -1,17 +1,26 @@
-import { renderCalaries } from "./calariesList.js";
+import { renderCalaries } from "./calariesList.js"
+
 
 export function renderHeader() {
-    const header = document.getElementById("header-nav");
+    const header = document.getElementById('header-container')
 
     header.innerHTML = `
-    <h1>GoFit</h1>
-    <section id = "create_form"></section>
-    <ul id="navlist">
-       <li id="cal_form_btn">Calaries</li>
-       <section id="cal_page"></section?
-       
-    </ul>
-   `;
+        <nav id="header-nav">
+            <ul id="navlist" class="sidenav">
+                <li id="home-button"><i class="fa-solid fa-house"></i></li>
+                <li id="add-activity-button"><i class="fa-solid fa-plus"></i></li>
+                <li id="create-group-button"><i class="fa-solid fa-people-group"></i></li>
+                <li id="update-goals-button"><i class="fa-solid fa-bullseye"></i></li>
+                <li id="your-activty-button"><i class="fa-solid fa-chart-line"></i></li>
+                <li id="view-calorie-button">View Calories</li>
+                <li id="my-profile-button"><i class="fa-regular fa-user"></i></li>
+            </ul>
+        </nav>
 
-   document.getElementById('cal_form_btn').addEventListener('click', renderCalaries)
+    `;
+
+    document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
+
+
 }
+

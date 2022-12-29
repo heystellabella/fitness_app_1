@@ -1,24 +1,34 @@
 const express = require("express")
+const bodyParser = require("body-parser")
+const db = require("./db/db")
 
 const path = require('path');
 
 const pg = require("pg");
 
-const bodyParser = require("body-parser")
 
-const db = new pg.Pool({
-    database: "gofit",
-  });
+
 const app = express()
 
 const PORT = 3000
 
+//Middleware
 app.use(express.static("static"))
-
 app.use(bodyParser.json())
 
-app.get("/", (req, res) => {
-    res.json({"status": "ok"})
+app.get("/api/profile", (req, res) => {
+    const sql = "SELECT * FROM users"
+    db.query(sql).then((dbResult) => {
+        res.json(dbResult.rows) 
+    })
+})
+
+app.get("/api/profile/:id", (req, res) => {
+    const sql = "SELECT * FROM users WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((dbResult) => {
+        res.json(dbResult.rows[0]) 
+    })
 })
 
 // get all calaries
@@ -32,7 +42,7 @@ app.get('/profile/calaries', (req, res)=> {
 })
 
 // get calaries by user_ID
-app.get('/profile/:id', (req, res)=> {
+app.get('/profile/calaries/:id', (req, res)=> {
     const id  = req.params.id
     const sql = `SELECT * FROM calorie_tracker WHERE user_id = ${id}`
     db.query(sql).then(({ rows }) => {
@@ -40,7 +50,26 @@ app.get('/profile/:id', (req, res)=> {
       });
 })
 
+app.post("/api/login-session", (req, res) => {
+    const email = [req.body.email]
+    const password = req.body.password
+    const sql = "SELECT email, password FROM users WHERE email = $1"
+    db.query(sql, email).then((dbResult) => {
+        if (dbResult.rows.length === 0) {
+            res.status(404).json({error: "User not found"})
+        } else {
+            const user = dbResult.rows[0]
+            if (user.password === password) {
+                res.json({message: "Login successful"})
+            } else {
+                res.status(401).json({error: "Incorrect password"})
+            }
+        }
+    })
+});
+
+
 
 app.listen(PORT, () => {
-    console.log(`Connected on http://localhost/${PORT}`)
+    console.log(`Connected on http://localhost:${PORT}`)
 })
