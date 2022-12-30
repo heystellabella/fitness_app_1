@@ -6,6 +6,7 @@ export function renderProfileDescription() {
     axios
     .get('/api/profile/2')
         .then((response) => {
+            const name = response.data.f_name
             const username = response.data.username
             const bio = response.data.bio
             const weightGoal = response.data.weight_goal
@@ -21,8 +22,9 @@ export function renderProfileDescription() {
             <div class="profile-picture"></div>
             <div id="response-element"></div>
             <form class="user-details" id="user-details" method="POST">
+                <h2>Update your profile, ${name}</h2>
                 <div class="submit-container">
-                    <button class="upload-picture" type="submit">Upload Picture</button>
+                    <button class="upload-picture" type="submit"><i class="fa-regular fa-image"></i></button>
                     <button class="submit">Save</button>    
                 </div>
                 <div class="form-container">

@@ -10,7 +10,11 @@ const app = express()
 
 const PORT = 3000
 
-//Middleware
+
+// ------------------------ //
+// ------ Middleware ------ //
+// ------------------------ //
+
 app.use(express.static("static"))
 app.use(bodyParser.json())
 app.use(expressSession({
@@ -21,6 +25,10 @@ app.use(expressSession({
     secret: process.env.SECRET
 }))
 
+
+// ------------------------ //
+// -------- Routes -------- //
+// ------------------------ //
 
 app.get("/api/profile", (req, res) => {
     const sql = "SELECT * FROM users"
@@ -104,7 +112,7 @@ app.post("/api/accounts", (req, res) => {
         const params = [f_name, l_name, email, passwordHash, username, bio, weight_goal, activity_goal, calorie_goal]
 
         db.query(sql, params).then((dbResult) => {
-            res.json({ message: "Account created successfully" })
+            res.json({ message: "Account created successfully." })
             
         })
     }
@@ -135,7 +143,7 @@ app.put("/api/accounts/:id", (req, res) => {
         })
     } else {
         db.query(sql, params).then((dbResult) => {
-            res.json({ message: "Account updated successfully" })
+            res.json({ message: "Account updated successfully." })
         })
     }
 })

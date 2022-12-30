@@ -191,6 +191,10 @@ body {
     margin-bottom: 18px;
 }
 
+.form-col > input:focus {
+    outline: 1px solid rgb(243, 242, 242);
+}
+
 .submit-container {
     display: flex;
     justify-content: flex-end;
@@ -207,7 +211,7 @@ body {
     text-decoration: none;
     border: none;
     align-items: end;
-    width: 10%;
+    width: 8%;
     margin-left: 20px;
     font-size: 12px;
 } 
@@ -220,13 +224,14 @@ body {
     border: 0.5px solid rgb(220, 220, 220);
     border-radius: 5px;
     font-size: 12px;
-    width: 10%;
+    width: 5%;
 }
 
+
 .response-message {
+    text-align: center;
     color: red;
     font-size: 12px;
-    margin-left: 35px;
 }
 
 
