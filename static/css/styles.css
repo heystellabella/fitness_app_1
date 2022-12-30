@@ -217,6 +217,12 @@ body {
     cursor: pointer;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-left: 35px;
+}
+
 
 /* 
 .sidenav {

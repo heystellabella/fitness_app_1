@@ -111,6 +111,23 @@ app.post("/api/accounts", (req, res) => {
 
 });
 
+app.put("/api/accounts/:id", (req, res) => {
+    const { username, bio, weight_goal, activity_goal, calorie_goal } = req.body
+    const id = req.params.id
+    const sql = "UPDATE users SET username = $1, bio = $2, weight_goal = $3, activity_goal = $4, calorie_goal = $5 WHERE user_id = $6"
+    const params = [username, bio, weight_goal, activity_goal, calorie_goal, id]
+
+    if (isNaN(weight_goal) || isNaN(activity_goal) || isNaN(calorie_goal)) {
+        res.status(400).json({
+            message: "Please enter a number for your weight goal, activity goal and calorie goal."
+        })
+    } else {
+        db.query(sql, params).then((dbResult) => {
+            res.json({ message: "Account updated successfully" })
+        })
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`Connected on http://localhost:${PORT}`)
