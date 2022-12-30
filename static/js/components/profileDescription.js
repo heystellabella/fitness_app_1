@@ -21,12 +21,26 @@ export function renderProfileDescription() {
             <div class="profile-picture"></div>
             <div id="response-element"></div>
             <form class="user-details" id="user-details" method="POST">
-                <h2>Username<input type="text" name="username" value="${username}" placeholder="Update your username"/></h2>
-                <h2>Bio<input type="text" name="bio" value="${bio}" placeholder="e.g. I like long walks on the beach"/></h2>
-                <h2>Weight Goal<input type="text" class="weight-goal" name="weightGoal" value="${weightGoal}" placeholder="Enter in KGs"/></h2>
-                <h2>Activity Goal<input type="text" name="activityGoal" value="${activityGoal}" placeholder="How many times a week?"/></h2>
-                <h2>Calorie Goal<input type="text" name="calorieGoal" value="${calorieGoal}" placeholder="What is your calorie goal?"/></h2>
-                <button class="submit">Save</button>
+                <div class="submit-container">
+                    <button class="upload-picture" type="submit">Upload Picture</button>
+                    <button class="submit">Save</button>    
+                </div>
+                <div class="form-container">
+                    <div class="form-col">
+                        <h2>Username:</h2>
+                        <h2>Bio:</h2>
+                        <h2>Weight Goal:</h2>
+                        <h2>Activity Goal:</h2>
+                        <h2>Calorie Goal:</h2>
+                    </div>
+                    <div class="form-col" id="form-inputs">
+                        <input type="text" name="username" value="${username}" placeholder="Update your username"/>
+                        <input type="text" name="bio" value="${bio}" placeholder="e.g. I like long walks on the beach"/>
+                        <input type="text" class="weight-goal" name="weightGoal" value="${weightGoal}" placeholder="Enter in KGs"/>
+                        <input type="text" name="activityGoal" value="${activityGoal}" placeholder="How many times a week?"/>
+                        <input type="text" name="calorieGoal" value="${calorieGoal}" placeholder="What is your calorie goal?"/>
+                    </div>
+                </div>
             </form>
             
             `;
@@ -34,7 +48,7 @@ export function renderProfileDescription() {
             mainContainer.appendChild(profileDescription);
             
             const saveButton = document.querySelector('.submit');
-            saveButton.addEventListener('submit', submitProfileDescription);
+            saveButton.addEventListener('click', submitProfileDescription);
 
             function submitProfileDescription(event) {
                 event.preventDefault();

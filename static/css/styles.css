@@ -168,40 +168,35 @@ body {
     box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
-.user-details {
-    width: 90%;
-    /* border: 1px solid rgb(243, 242, 242); */
-    margin: 0 auto;
-    padding-top: 30px;
+.form-container {
+    display: flex;
 }
 
-.user-details > h2 {
-    margin-left: 35px;
+
+.form-col > h2 {
+    margin-left: 100px;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 16px;
     color: rgb(66, 66, 66);
+    width: 200px;
 }
 
-.user-details > h2 > input {
+.form-col > input {
     border: none;
     border-bottom: 1px solid rgb(243, 242, 242);
-    width: 50%;
+    width: 80%;
     font-size: 14px;
     color: rgb(66, 66, 66);
-    margin-left: 250px;
-    padding-bottom: 10px;
+    margin-left: 50px;
+    margin-bottom: 18px;
 }
 
-.user-details > h2:nth-child(1) > input {
-    margin-left: 265px;
-}
-
-.user-details > h2:nth-child(2) > input {
-    margin-left: 310px;
-}
-
-.user-details > h2 > input:focus {
-    outline: none;
+.submit-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+    margin-top: -50px;
+    margin-bottom: 70px;
 }
 
 .submit {
@@ -211,10 +206,21 @@ body {
     border-radius: 5px;
     text-decoration: none;
     border: none;
-}
+    align-items: end;
+    width: 10%;
+    margin-left: 20px;
+    font-size: 12px;
+} 
 
 .submit:hover {
     cursor: pointer;
+}
+
+.upload-picture {
+    border: 0.5px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    font-size: 12px;
+    width: 10%;
 }
 
 .response-message {
@@ -222,6 +228,22 @@ body {
     font-size: 12px;
     margin-left: 35px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* 
