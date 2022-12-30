@@ -204,7 +204,7 @@ body {
     outline: none;
 }
 
-.save-details {
+.submit {
     background-color: #FEE58E;
     color: black;
     padding: 10px 20px;
@@ -213,11 +213,11 @@ body {
     border: none;
 }
 
-.save-details:hover {
+.submit:hover {
     cursor: pointer;
 }
 
-.error-message {
+.response-message {
     color: red;
     font-size: 12px;
     margin-left: 35px;

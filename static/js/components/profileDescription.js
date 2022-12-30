@@ -19,22 +19,22 @@ export function renderProfileDescription() {
             </div>
             <div class="gradient-background"></div>
             <div class="profile-picture"></div>
-            <div id="errors"></div>
+            <div id="response-element"></div>
             <form class="user-details" id="user-details" method="POST">
                 <h2>Username<input type="text" name="username" value="${username}" placeholder="Update your username"/></h2>
                 <h2>Bio<input type="text" name="bio" value="${bio}" placeholder="e.g. I like long walks on the beach"/></h2>
-                <h2>Weight Goal<input type="text" name="weightGoal" value="${weightGoal}" placeholder="Enter in KGs"/></h2>
+                <h2>Weight Goal<input type="text" class="weight-goal" name="weightGoal" value="${weightGoal}" placeholder="Enter in KGs"/></h2>
                 <h2>Activity Goal<input type="text" name="activityGoal" value="${activityGoal}" placeholder="How many times a week?"/></h2>
                 <h2>Calorie Goal<input type="text" name="calorieGoal" value="${calorieGoal}" placeholder="What is your calorie goal?"/></h2>
-                <button class="save-button">Save</button>
+                <button class="submit">Save</button>
             </form>
             
-            `
+            `;
 
             mainContainer.appendChild(profileDescription);
             
-            const saveButton = document.querySelector('.save-button');
-            saveButton.addEventListener('click', submitProfileDescription);
+            const saveButton = document.querySelector('.submit');
+            saveButton.addEventListener('submit', submitProfileDescription);
 
             function submitProfileDescription(event) {
                 event.preventDefault();
@@ -48,19 +48,28 @@ export function renderProfileDescription() {
                     calorie_goal: userDetailsFormData.get('calorieGoal')
                 }
 
-                const errors = document.getElementById('errors');
-                const errorChild = document.createElement('p'); 
+                const responseElement = document.getElementById('response-element');
+                const responseElementChild = document.createElement('p'); 
+                responseElementChild.classList.add('response-message');
+                responseElement.innerHTML = ''
 
                 axios
                 .put('/api/accounts/2', data)
                 .then((response) => {
-                    console.log(response.data)
+                    responseElementChild.innerHTML = response.data.message;
+                    responseElement.appendChild(responseElementChild);
                 })
                 .catch((error) => {
-                    errors.innerHTML = ''
-                    errorChild.innerHTML = error.response.data.message;
-                    errorChild.classList.add('error-message');
-                    errors.appendChild(errorChild);
+                    responseElementChild.innerHTML = error.response.data.message;
+                    responseElement.appendChild(responseElementChild);
+
+                    // DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY
+
+                    if (error.response.data.message === 'Please enter a number for your weight goal.') {
+                        const weightGoalInput = document.querySelector('.weight-goal');
+                        weightGoalInput.value = '';
+                        weightGoalInput.focus();
+                    } 
                 })
             }
 
