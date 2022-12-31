@@ -203,6 +203,13 @@ body {
     margin-bottom: 70px;
 }
 
+.submit-container h2 {
+    margin-right: 20px;
+    width: 55%;
+    font-size: 16px;
+    color: rgb(66, 66, 66);
+}
+
 .submit {
     background-color: #FEE58E;
     color: black;
@@ -216,9 +223,6 @@ body {
     font-size: 12px;
 } 
 
-.submit:hover {
-    cursor: pointer;
-}
 
 .upload-picture {
     border: 0.5px solid rgb(220, 220, 220);
@@ -227,6 +231,9 @@ body {
     width: 5%;
 }
 
+.submit:hover, .upload-picture:hover {
+    cursor: pointer;
+}
 
 .response-message {
     text-align: center;
