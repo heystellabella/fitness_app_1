@@ -1,3 +1,7 @@
+import { renderHome } from "./homeDashboard.js"
+import { renderProfileDescription } from "./profileDescription.js"
+
+
 export function renderHeader() {
     const header = document.getElementById('header-container')
     header.innerHTML = `
@@ -23,5 +27,7 @@ export function renderHeader() {
         </nav>
 
     `
+    document.getElementById('home-button').addEventListener('click', renderHome)
+    document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
 }
 

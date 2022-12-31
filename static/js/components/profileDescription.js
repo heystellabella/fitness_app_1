@@ -1,5 +1,9 @@
 export function renderProfileDescription() {
+    console.log('clicked')
     const mainContainer = document.getElementById('main-container');
+    mainContainer.innerHTML = '';
+
+
     const profileDescription = document.createElement('div');
     profileDescription.id = 'profile-description';
     

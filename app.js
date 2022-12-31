@@ -62,6 +62,7 @@ app.post("/api/login-session", (req, res) => {
 
             if (isValidPassword(password, user.password)) {
                 req.session.email = email
+                req.session.user_id = user.user_id
                 
                 res.json({message: "Login successful"})
             } else {
