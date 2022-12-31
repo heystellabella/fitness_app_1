@@ -19,7 +19,7 @@ export function renderHeader() {
 
     `;
 
-    document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
+    // document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
 
 
 }

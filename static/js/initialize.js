@@ -3,6 +3,6 @@ import { renderProfileDescription } from './components/profileDescription.js'
 import { renderCalaries } from './components/calariesList.js'
 
 renderHeader()
-// renderProfileDescription()
+renderProfileDescription()
 // renderCalaries()
 
