@@ -19,7 +19,7 @@ export function renderProfileDescription() {
             const calorieGoal = response.data.calorie_goal
             
             profileDescription.innerHTML = `
-            <div class="profile-description-container">
+            <div class="main-card-container">
             <div class="page-title">
             <h1>Your Profile</h1>
             </div>
@@ -49,6 +49,7 @@ export function renderProfileDescription() {
                     </div>
                 </div>
             </form>
+            </div>
             
             `;
 
