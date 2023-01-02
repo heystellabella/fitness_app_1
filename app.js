@@ -5,10 +5,17 @@ const db = require("./db/db")
 const bcrypt = require("bcrypt")
 const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
+const cloudinary = require("cloudinary").v2
 
 const app = express()
 
 const PORT = 3000
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 
 // ------------------------ //
