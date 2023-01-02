@@ -5,12 +5,23 @@ const db = require("./db/db")
 const bcrypt = require("bcrypt")
 const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
+const cloudinary = require("cloudinary").v2
 
 const app = express()
 
 const PORT = 3000
 
-//Middleware
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
+
+// ------------------------ //
+// ------ Middleware ------ //
+// ------------------------ //
+
 app.use(express.static("static"))
 app.use(bodyParser.json())
 app.use(expressSession({
@@ -21,6 +32,10 @@ app.use(expressSession({
     secret: process.env.SECRET
 }))
 
+
+// ------------------------ //
+// -------- Routes -------- //
+// ------------------------ //
 
 app.get("/api/profile", (req, res) => {
     const sql = "SELECT * FROM users"
@@ -54,6 +69,7 @@ app.post("/api/login-session", (req, res) => {
 
             if (isValidPassword(password, user.password)) {
                 req.session.email = email
+                req.session.user_id = user.user_id
                 
                 res.json({message: "Login successful"})
             } else {
@@ -104,12 +120,41 @@ app.post("/api/accounts", (req, res) => {
         const params = [f_name, l_name, email, passwordHash, username, bio, weight_goal, activity_goal, calorie_goal]
 
         db.query(sql, params).then((dbResult) => {
-            res.json({ message: "Account created successfully" })
+            res.json({ message: "Account created successfully." })
             
         })
     }
 
 });
+
+app.put("/api/accounts/:id", (req, res) => {
+    const { username, bio, weight_goal, activity_goal, calorie_goal } = req.body
+    const id = req.params.id
+    const sql = "UPDATE users SET username = $1, bio = $2, weight_goal = $3, activity_goal = $4, calorie_goal = $5 WHERE user_id = $6"
+    const params = [username, bio, weight_goal, activity_goal, calorie_goal, id]
+
+    if ((username == "" && bio == "" && weight_goal == "" && activity_goal == "" && calorie_goal == "") || username == "" || bio == "" || weight_goal == "" || activity_goal == "" || calorie_goal == "") {
+        res.status(400).json({
+            message: "Stop trying to break my form!"
+        })
+    } else if (isNaN(weight_goal)) {
+        res.status(400).json({
+            message: "Please enter a number for your weight goal."
+        })
+    } else if (isNaN(activity_goal)) {
+        res.status(400).json({
+            message: "Please enter a number for your activity goal."
+        })
+    } else if (isNaN(calorie_goal)) {
+        res.status(400).json({
+            message: "Please enter a number for your calorie goal."
+        })
+    } else {
+        db.query(sql, params).then((dbResult) => {
+            res.json({ message: "Account updated successfully." })
+        })
+    }
+})
 
 
 app.listen(PORT, () => {
