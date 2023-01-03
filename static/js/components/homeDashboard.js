@@ -27,10 +27,12 @@ export function renderHome() {
 
             profileCard.innerHTML = `
                 <div class="profile-card-user-info">
-                    
-                    <h2>${f_name} ${l_name}</h2>
-                    <h3>@${username}</h3>
-                    <p>${bio}</p>
+                    <div class="profile-picture-card">INSERT PROFILE PICTURE HERE</div>
+                    <div class="profile-card-user-details">
+                        <h2>${f_name} ${l_name}</h2>
+                        <h3>@${username}</h3>
+                        <p>${bio}</p>
+                    </div>
                 </div>
                 <div class="profile-card-goals">
                     <div class="weight-goal-profile">
@@ -41,14 +43,14 @@ export function renderHome() {
                     </div>
                     <div class="activity-goal-profile">
                         <i class="fa-solid fa-chart-line"></i>
-                        <p> ${activityGoal} times</p>
-                        <p>per week</p>
+                        <p> ${activityGoal} </p>
+                        <p>times p/ week</p>
                         <p>Activity Goal</p>
                     </div>
                     <div class="calorie-goal-profile">
                         <i class="fa-solid fa-heart"></i>
-                        <p> ${calorieGoal} kcal</p>
-                        <p>per day</p>
+                        <p> ${calorieGoal} </p>
+                        <p>kcal p/ day</p>
                         <p>Calorie Goal</p>
                     </div>
                 </div>
@@ -63,8 +65,8 @@ export function renderHome() {
             activityCard.classList.add('activity-card')
             activityCard.innerHTML = `
                 <div class="activity-card-header">
-                    <h2>Latest Activity</h2>
-                    <button class="add-activity">Add Activity</button>
+                    <h2>Latest Activity <button class="add-activity-button"><i class="fa-solid fa-plus"></i></button> </h2>
+                    
                 </div>
                 <div class="activity-card-body">
                     <div class="activity-card-body-header">

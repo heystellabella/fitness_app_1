@@ -130,8 +130,8 @@ body {
 
 .profile-card {
     display: flex;
-    justify-content: space-between;
-    padding: 5%
+    /* justify-content: space-between; */
+    padding: 2.5%;
 }
 
 .profile-card h2, h3 {
@@ -151,18 +151,34 @@ body {
 
 .profile-card-user-info {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    /* justify-content: space-between; */
     background-color: white;
     border-radius: 7.5px;
-    padding: 5%
+
+    margin-right: 20px;
 }
+
+.profile-card-user-details {
+    margin-left: 10px;
+    width: 250px;
+    border: 1px solid red;
+}
+
+.profile-card-user-details > * {
+    margin: 5px;
+}
+
+.profile-card-user-details > h2 {
+    margin-top: 47.5px;
+}
+
 
 .profile-card-goals {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 5%;
+    /* padding: 5%; */
     color: white;
 }
 
@@ -172,7 +188,7 @@ body {
     justify-content: space-between;
     padding: 5%;
     font-size: 12px;
-    height: 150px;
+    height: 175px;
     width: 75px;
     margin-left: 10px;
     text-align: center;
@@ -181,6 +197,10 @@ body {
 .profile-card-goals i {
     font-size: 20px;
     margin-bottom: 10px;
+    /* border: 1px solid white; */
+    border-radius: 7.5px;
+    padding: 5px;
+    height: 35px;
 }
 
 .weight-goal-profile {
@@ -220,6 +240,79 @@ body {
 
 .calorie-goal-profile p:nth-child(2) {
     font-weight: bold;
+}
+
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 7.5px;
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 30%;
+    height: 225px;
+    padding: 2.5%;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.activity-card-header {
+    border-bottom: 1px solid rgb(243, 242, 242);
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-activity-button {
+    background-color: white;
+    border: none;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.add-activity-button > i {
+    color: black;
+}
+
+.add-activity-button:hover {
+    cursor: pointer;
+}
+
+.activity-card-body {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.activity-card-body-header {
+    display: flex;
+    background-color: #DC796E;
+    height: 125px;
+    width: 100px;
+    border-radius: 7.5px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.activity-card-body-header > * {
+    color: white;
+}
+
+.activity-card-body-content {
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.activity-card-body-content > * {
+    color: rgb(0, 0, 0);
+    font-weight: 500;
 }
 
 
