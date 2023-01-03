@@ -124,10 +124,13 @@ body {
 /* -------------------- HOME PAGE ----------------------- */
 /* ------------------------------------------------------ */
 
+#home-container {
+    background-color: #F9F9F9;
+}
+
 .profile-card {
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
     padding: 5%
 }
 
@@ -141,7 +144,7 @@ body {
     color: rgb(66, 66, 66);
 }
 
-.profile-card-goals span {
+.profile-card-goals p {
     font-size: 13px;
     color: rgb(66, 66, 66);
 }
@@ -150,21 +153,75 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid red;
+    background-color: white;
+    border-radius: 7.5px;
     padding: 5%
 }
 
 .profile-card-goals {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    border: 1px solid red;
-    padding: 5%
+    padding: 5%;
+    color: white;
 }
 
-.profile-card-goals > h2 {
+.weight-goal-profile, .activity-goal-profile, .calorie-goal-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5%;
+    font-size: 12px;
+    height: 150px;
+    width: 75px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.profile-card-goals i {
+    font-size: 20px;
     margin-bottom: 10px;
 }
+
+.weight-goal-profile {
+    background-color: #6F4CF9;
+    border-radius: 7.5px;
+}
+
+.weight-goal-profile > p {
+    color: white;
+}
+
+.weight-goal-profile p:nth-child(2) {
+    font-weight: bold;
+}
+
+.activity-goal-profile {
+    background-color: #DC796E;
+    border-radius: 7.5px;
+}
+
+.activity-goal-profile > p {
+    color: white;
+}
+
+.activity-goal-profile p:nth-child(2) {
+    font-weight: bold;
+}
+
+.calorie-goal-profile {
+    background-color: #69B2DB;
+    border-radius: 7.5px;
+}
+
+.calorie-goal-profile > p {
+    color: white;
+}
+
+.calorie-goal-profile p:nth-child(2) {
+    font-weight: bold;
+}
+
 
 /* ------------------------------------------------------ */
 /* ------------------ PROFILE PAGE ---------------------- */
