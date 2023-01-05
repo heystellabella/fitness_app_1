@@ -16,6 +16,7 @@ export function renderCalaries() {
         .get('http://localhost:3000/profile/calaries/1')
         .then((response) => {
             const lists = response.data
+            console.log(lists)
 
             const cal_section = document.createElement('div')
             cal_section.id = 'cal_section'

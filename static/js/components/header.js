@@ -1,11 +1,9 @@
-import { renderCalaries } from "./calariesList.js"
 import { renderHome } from "./homeDashboard.js"
 import { renderProfileDescription } from "./profileDescription.js"
-
+import { renderCalaries } from "./calariesList.js"
 
 export function renderHeader() {
     const header = document.getElementById('header-container')
-
     header.innerHTML = `
         <nav id="header-nav">
             <ul id="mainnav" class="mainnav">
@@ -27,10 +25,10 @@ export function renderHeader() {
                 <li id="my-profile-button"><i class="fa-regular fa-user"></i>My Profile</li>
             </ul>
         </nav>
-
     `
+
+    document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
     document.getElementById('home-button').addEventListener('click', renderHome)
-    document.getElementById('view-calorie-button').addEventListener('click',renderCalaries)
     document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
 }
 
