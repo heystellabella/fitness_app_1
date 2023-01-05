@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt")
 const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
 const cloudinary = require("cloudinary").v2
-const cors = require("cors")
+const cookieParser = require("cookie-parser")
 
 const app = express()
 
@@ -25,20 +25,22 @@ cloudinary.config({
 
 app.use(express.static("static"))
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(expressSession({
     store: new pgSession({
         pool: db,
         createTableIfMissing: true,
     }),
-    secret: process.env.SECRET
+    secret: process.env.SECRET,
 }))
-app.use(cors({
-    credentials: true,
-}));
 
 // ------------------------ //
 // -------- Routes -------- //
 // ------------------------ //
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/static/index.html")
+})
 
 app.get("/api/profile", (req, res) => {
     const sql = "SELECT * FROM users"
@@ -51,7 +53,6 @@ app.get("/api/profile/:user_id", (req, res) => {
     const sql = "SELECT * FROM users WHERE user_id = $1"
     const params = [req.params.user_id]
     db.query(sql, params).then((dbResult) => {
-        // const userID = req.params.user_id
         res.json(dbResult.rows[0]) 
     })
 })
@@ -74,15 +75,28 @@ app.post("/api/login-session", (req, res) => {
             if (isValidPassword(password, user.password)) {
                 req.session.email = email
                 req.session.user_id = user.user_id
-                console.log(req.session.user_id)
+                req.session.save()
+
+                // console.log(req.session)
+                // console.log('the req session is' + req.session, req.session.user_id, user.user_id)
+
+                res.json({message: "Login Successful"})
                 
-                res.json({message: "Login successful"})
             } else {
                 res.status(401).json({message: "Invalid password"})
             }
         }
     })
 });
+
+app.get("/api/session", (req, res) => {
+    res.json(req.session)
+})
+
+app.delete("/api/session", (req, res) => {
+    req.session.destroy()
+    res.json({message: "Session deleted"})
+})
 
 app.get("/api/accounts", (req, res) => {
     const sql = "SELECT * FROM users;"
