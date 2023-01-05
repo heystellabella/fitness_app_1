@@ -7,7 +7,9 @@ export function renderProfileDescription() {
     profileDescription.id = 'profile-description';
     
     axios
-    .get('/api/profile/2')
+    .get('/api/profile/2', {
+        withCredentials: true
+    })
         .then((response) => {
             const f_name = response.data.f_name
             const l_name = response.data.l_name
