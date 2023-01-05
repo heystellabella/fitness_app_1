@@ -1,3 +1,5 @@
+
+
 require('dotenv').config()
 const express = require("express")
 const bodyParser = require("body-parser")
@@ -7,12 +9,6 @@ const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
 const cloudinary = require("cloudinary").v2
 const cors = require("cors")
-
-const path = require('path');
-
-const pg = require("pg");
-
-
 
 const app = express()
 
@@ -62,17 +58,7 @@ app.get("/api/profile/:user_id", (req, res) => {
     })
 })
 
-// -- Calaries routes - Haden //
-app.get("/profile/calaries/:id", (req, res) => {
-    const id = req.params.id
-    const sql = `SELECT * FROM calorie_tracker inner join users on calorie_tracker.user_id = users.user_id WHERE calorie_tracker.user_id = ${id}`
-    
-    db.query(sql).then(({ rows })=> {
-        res.json(rows)
-    })
-})
 
-// -- log in with insert query
 app.post("/api/login-session", (req, res) => {
     const email = [req.body.email]
     const password = req.body.password
@@ -97,26 +83,6 @@ app.post("/api/login-session", (req, res) => {
                 res.status(401).json({message: "Invalid password"})
             }
         }
-    })
-})
-
-// App route to get weight information for user
-app.get("/api/weight/:id", (req, res) =>{
-    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
-    })
-})
-
-// App route to get activity information for user
-app.get("/api/activity/:id", (req, res) =>{
-    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
     })
 });
 
