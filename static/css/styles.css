@@ -120,6 +120,51 @@ body {
     background-color: #171C21;
 }
 
+/* ------------------------------------------------------ */
+/* -------------------- HOME PAGE ----------------------- */
+/* ------------------------------------------------------ */
+
+.profile-card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    padding: 5%
+}
+
+.profile-card h2, h3 {
+    font-size: 16px;
+    color: rgb(66, 66, 66);
+}
+
+.profile-card p {
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.profile-card-goals span {
+    font-size: 13px;
+    color: rgb(66, 66, 66);
+}
+
+.profile-card-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid red;
+    padding: 5%
+}
+
+.profile-card-goals {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid red;
+    padding: 5%
+}
+
+.profile-card-goals > h2 {
+    margin-bottom: 10px;
+}
 
 /* ------------------------------------------------------ */
 /* ------------------ PROFILE PAGE ---------------------- */

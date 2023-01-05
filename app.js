@@ -5,6 +5,7 @@ const db = require("./db/db")
 const bcrypt = require("bcrypt")
 const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
+const cloudinary = require("cloudinary").v2
 
 const path = require('path');
 
@@ -15,6 +16,12 @@ const pg = require("pg");
 const app = express()
 
 const PORT = 3000
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 
 // ------------------------ //
@@ -61,6 +68,7 @@ app.get("/profile/calaries/:id", (req, res) => {
     })
 })
 
+// -- log in with insert query
 app.post("/api/login-session", (req, res) => {
     const email = [req.body.email]
     const password = req.body.password
@@ -84,6 +92,26 @@ app.post("/api/login-session", (req, res) => {
                 res.status(401).json({message: "Invalid password"})
             }
         }
+    })
+})
+
+// App route to get weight information for user
+app.get("/api/weight/:id", (req, res) =>{
+    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
+    })
+})
+
+// App route to get activity information for user
+app.get("/api/activity/:id", (req, res) =>{
+    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
     })
 });
 

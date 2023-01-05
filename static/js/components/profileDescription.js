@@ -1,5 +1,4 @@
 export function renderProfileDescription() {
-    console.log('clicked')
     const mainContainer = document.getElementById('main-container');
     mainContainer.innerHTML = '';
 
@@ -27,7 +26,7 @@ export function renderProfileDescription() {
             <div class="profile-picture"></div>
             <div id="response-element"></div>
             <form class="user-details" id="user-details" method="POST">
-            <div class="submit-container">
+                <div class="submit-container">
                     <h2>${f_name} ${l_name}</h2>
                     <button class="upload-picture" type="submit"><i class="fa-regular fa-image"></i></button>
                     <button class="submit">Save</button>    
@@ -94,6 +93,25 @@ export function renderProfileDescription() {
                     } 
                 })
             }
+
+            const submitProfilePicture = document.querySelector('.upload-picture');
+            submitProfilePicture.addEventListener('click', uploadProfilePicture);
+
+            function uploadProfilePicture(event) {
+                console.log('clicked')
+                event.preventDefault();
+                // const userDetails = document.getElementById('user-details');
+                // const profilePictureFormData = new FormData(userDetails);
+                // const data = {
+                //     profile_picture: profilePictureFormData.get('profilePicture')
+                // }
+
+                // axios
+                // .put('/api/accounts/2', data)
+                // .then((response) => {
+                //     cloudinary.uploader.upload
+                // })
+            };
 
         });
 
