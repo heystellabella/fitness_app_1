@@ -7,7 +7,7 @@ export function renderHeader() {
     header.innerHTML = `
         <nav id="header-nav">
             <ul id="mainnav" class="mainnav">
-                <li id="about">About</li>
+                <li id="logout">Log Out</li>
                 <li id="home-logo">GoFit</li>
                 <div id="cta" class="cta">
                     <li id="cta-join-now"><a href="./sign-up.html">Join Now</li>
@@ -30,5 +30,15 @@ export function renderHeader() {
     document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
     document.getElementById('home-button').addEventListener('click', renderHome)
     document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
+    document.getElementById('logout').addEventListener('click', logout)
+
+    function logout() {
+            axios
+            .delete('/api/session')
+            .then((response) => {
+                window.location.href = "/login.html"
+            })
+        }
+        
 }
 

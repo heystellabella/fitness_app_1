@@ -35,6 +35,7 @@ function submitLoginForm(event) {
     .then((response) => {
         errorChild.innerHTML = response.data.message;
         errors.appendChild(errorChild);
+        window.location.href = '/';
     })
     .catch((error) => {
         errors.innerHTML = ''
