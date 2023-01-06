@@ -89,17 +89,6 @@ app.post("/api/login-session", (req, res) => {
     })
 })
 
-// get calories routes
-
-app.get("/profile/calaries/:id", (req, res) => {
-    const id = req.params.id
-    const sql = `SELECT * FROM calorie_tracker inner join users on calorie_tracker.user_id = users.user_id where calorie_tracker.user_id = ${id}`
-
-    db.query(sql).then(({ rows }) => {
-        res.json(rows)
-    })
-})
-
 // App route to get weight information for user
 app.get("/api/weight/:id", (req, res) =>{
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
@@ -206,8 +195,18 @@ app.put("/api/accounts/:id", (req, res) => {
     }
 })
 
+// get calories routes
+
+app.get("/profile/calaries/:id", (req, res) => {
+    const id = req.params.id
+    const sql = `SELECT * FROM calorie_tracker inner join users on calorie_tracker.user_id = users.user_id where calorie_tracker.user_id = ${id}`
+
+    db.query(sql).then(({ rows }) => {
+        res.json(rows)
+    })
+})
+
 
 app.listen(PORT, () => {
     console.log(`Connected on http://localhost:${PORT}`)
 })
-
