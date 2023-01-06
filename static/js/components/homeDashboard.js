@@ -150,7 +150,6 @@ export function renderHome() {
                 `
                 profileCard.after(activityCard)
             })
-    })
-}
+    
             
 

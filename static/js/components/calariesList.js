@@ -55,7 +55,3 @@ export function renderCalaries() {
         
         })   
         }
-
-          
-            
-
