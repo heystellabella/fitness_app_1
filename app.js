@@ -6,7 +6,11 @@ const bcrypt = require("bcrypt")
 const expressSession = require("express-session")
 const pgSession = require("connect-pg-simple")(expressSession)
 const cloudinary = require("cloudinary").v2
+
+const cors = require("cors")
+
 const cookieParser = require("cookie-parser")
+
 
 const app = express()
 
@@ -34,6 +38,11 @@ app.use(expressSession({
     secret: process.env.SECRET,
 }))
 
+app.use(cors({
+    credentials: true,
+}));
+
+
 // ------------------------ //
 // -------- Routes -------- //
 // ------------------------ //
@@ -53,6 +62,7 @@ app.get("/api/profile/:user_id", (req, res) => {
     const sql = "SELECT * FROM users WHERE user_id = $1"
     const params = [req.params.user_id]
     db.query(sql, params).then((dbResult) => {
+        // const userID = req.params.user_id
         res.json(dbResult.rows[0]) 
     })
 })
@@ -75,37 +85,21 @@ app.post("/api/login-session", (req, res) => {
             if (isValidPassword(password, user.password)) {
                 req.session.email = email
                 req.session.user_id = user.user_id
+
+                console.log(req.session.user_id)
+
                 req.session.save()
 
                 // console.log(req.session)
                 // console.log('the req session is' + req.session, req.session.user_id, user.user_id)
 
                 res.json({message: "Login Successful"})
+
                 
             } else {
                 res.status(401).json({message: "Invalid password"})
             }
         }
-    })
-})
-
-// App route to get weight information for user
-app.get("/api/weight/:id", (req, res) =>{
-    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
-    })
-})
-
-// App route to get activity information for user
-app.get("/api/activity/:id", (req, res) =>{
-    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
     })
 });
 
@@ -119,7 +113,6 @@ app.get("/profile/calaries/:id", (req, res) => {
         res.json(rows)
     })
 })
-
 
 app.get("/api/session", (req, res) => {
     res.json(req.session)
@@ -211,4 +204,3 @@ app.put("/api/accounts/:id", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Connected on http://localhost:${PORT}`)
 })
-
