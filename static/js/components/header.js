@@ -1,6 +1,6 @@
 import { renderHome } from "./homeDashboard.js"
 import { renderProfileDescription } from "./profileDescription.js"
-
+import { renderCalaries } from "./calariesList.js"
 
 export function renderHeader() {
     const header = document.getElementById('header-container')
@@ -29,6 +29,8 @@ export function renderHeader() {
     document.getElementById('home-button').addEventListener('click', renderHome)
     document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
     document.getElementById('logout').addEventListener('click', logout)
+    document.getElementById('view-calorie-button').addEventListener('click',renderCalaries)
+
 
     function logout() {
             axios
