@@ -40,6 +40,7 @@ export function renderExerciseSearchResults() {
             pageTitle.appendChild(resultsHeader)
         } else {
 
+            // HARD CAP AT 10 RESULTS (CAN ADJUST)
             if (response.data.length > 0) {
                 resultsHeader.textContent = `Showing 10 Results`
                 pageTitle.appendChild(resultsHeader)

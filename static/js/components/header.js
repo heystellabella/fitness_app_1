@@ -19,11 +19,9 @@ export function renderHeader() {
             </ul>
             <div class="spacer"></div>
             <ul id="subnav" class="subnav">
-                <li id="search-bar-container">
-                    <div class="search-bar">
-                        <input type="text" id="search-bar" placeholder="Name of Exercise">
-                        <button id="search-button" type="submit"><i class="fa-solid fa-search"></i></button>
-                    </div>
+                <li class="search-bar-container">
+                    <input type="text" id="search-bar" placeholder="Name of Exercise">
+                    <button id="search-button" type="submit"><i class="fa-solid fa-search"></i></button>
                 </li>
                 <li id="home-button"><i class="fa-solid fa-house"></i>Home</li>
                 <!-- <li id="add-activity-button"><i class="fa-solid fa-plus"></i>Add Activity</li> -->

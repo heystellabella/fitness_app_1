@@ -119,6 +119,34 @@ body {
     padding-right: 40px;
 }
 
+.search-bar-container > input {
+    border: none;
+    outline: none;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.search-bar-container > button {
+    border: none;
+    outline: none;
+    background-color: #FEE58E;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.search-bar-container > button:hover {
+    cursor: pointer;
+}
+
 /* ------------------ FOOTER COMPONENT ------------------ */
 
 .footer {
@@ -152,7 +180,7 @@ body {
     width: 300px;
     height: 300px;
     margin-bottom: 20px;
-    padding: 5%;
+    padding: 2.5%;
     box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
