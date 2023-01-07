@@ -81,7 +81,7 @@ export function renderProfileDescription() {
                     responseElement.innerHTML = ''
     
                     axios
-                    .put('/api/accounts/2', data)
+                    .put(`/api/accounts/${user_id}`, data)
                     .then((response) => {
                         responseElementChild.innerHTML = response.data.message;
                         responseElement.appendChild(responseElementChild);

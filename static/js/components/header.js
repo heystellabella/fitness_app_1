@@ -20,9 +20,10 @@ export function renderHeader() {
             <div class="spacer"></div>
             <ul id="subnav" class="subnav">
                 <li class="search-bar-container">
-                    <input type="text" id="search-bar" placeholder="Name of Exercise">
+                    <input type="text" id="search-bar" placeholder="Search Exercise">
                     <button id="search-button" type="submit"><i class="fa-solid fa-search"></i></button>
                 </li>
+                <li class="li-space"></li>
                 <li id="home-button"><i class="fa-solid fa-house"></i>Home</li>
                 <!-- <li id="add-activity-button"><i class="fa-solid fa-plus"></i>Add Activity</li> -->
                 <li id="create-group-button"><i class="fa-solid fa-people-group"></i>Groups</li>
