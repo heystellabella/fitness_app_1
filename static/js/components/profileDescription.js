@@ -26,7 +26,7 @@ export function renderProfileDescription() {
                 profileDescription.innerHTML = `
                 <div class="main-card-container">
                 <div class="page-title">
-                <h1>Your Profile</h1>
+                    <h1>Your Profile</h1>
                 </div>
                 <div class="gradient-background"></div>
                 <div class="profile-picture"></div>
