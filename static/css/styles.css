@@ -8,6 +8,48 @@ body {
     background-color: rgb(225, 225, 225);
 }
 
+/* Logout State */
+.hero-image {
+    background-image: url("./assets/hero-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 85vh;
+}
+
+#hero-banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 40%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.313);
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-paragraph {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.call-to-action-button {
+    background-color: #FEE58E;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+}
+
+
 /* Navbar */
 .mainnav {
     display: flex;

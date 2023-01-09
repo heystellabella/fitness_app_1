@@ -4,6 +4,47 @@ import { renderActivityPage } from "./activity.js"
 import { renderWeightPage } from "./weight.js"
 import { renderExerciseSearchResults } from "./exerciseSearchResults.js"
 
+// if session is active, render the header with the logout button
+// if session is not active, render the header with the login and join now buttons
+// if the session is not active the subnav is removed and homepage is rendered
+
+axios
+    .get("/api/session")
+    .then((response) => {
+        if (response.data.user_id) {
+            renderHeader()
+        } else {
+            renderHeader()
+            const subnav = document.getElementById('subnav')
+            subnav.remove()
+            const logOutState = document.getElementById('logout')
+            logOutState.textContent = 'About'
+            
+            const mainContainer = document.getElementById('main-container')
+            const heroBanner = document.createElement('div')
+            heroBanner.id = 'hero-banner'
+            mainContainer.appendChild(heroBanner)
+
+            const heroImageContainer = document.getElementById('hero-banner')
+            heroImageContainer.classList.add('hero-image')
+
+            const heroBannerContent = document.createElement('div')
+            heroBannerContent.id = 'hero-banner-content'
+            heroImageContainer.appendChild(heroBannerContent)
+
+            const heroParagraph = document.createElement('p')
+            heroParagraph.classList.add('hero-paragraph')
+            heroParagraph.textContent = 'Set Goals. Track Progress. Get Fit.'
+            heroBannerContent.appendChild(heroParagraph)
+            
+            const callToActionButton = document.createElement('a')
+            callToActionButton.href = './sign-up.html'
+            callToActionButton.classList.add('call-to-action-button')
+            callToActionButton.textContent = 'Create An Account'
+            heroBannerContent.appendChild(callToActionButton)
+
+        }
+    })
 
 export function renderHeader() {
     const header = document.getElementById('header-container')
@@ -33,10 +74,6 @@ export function renderHeader() {
                 <li id="my-profile-button"><i class="fa-regular fa-user"></i>My Profile</li>
             </ul>
         </nav>
-
-        <div id="search-results-container">
-        
-        </div>
 
     `
     document.getElementById('search-button').addEventListener('click', renderExerciseSearchResults)
