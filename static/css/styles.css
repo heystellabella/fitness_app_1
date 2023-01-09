@@ -8,6 +8,48 @@ body {
     background-color: rgb(225, 225, 225);
 }
 
+/* Logout State */
+.hero-image {
+    background-image: url("./assets/hero-image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 85vh;
+}
+
+#hero-banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 40%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.313);
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-paragraph {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.call-to-action-button {
+    background-color: #FEE58E;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+}
+
+
 /* Navbar */
 .mainnav {
     display: flex;
@@ -109,6 +151,49 @@ body {
     margin-right: 5px;
 }
 
+.li-space {
+    border-right: 1px solid rgba(0, 0, 0, 0.218);
+    height: 30px;
+}
+
+.subnav > li:nth-child(2) {
+    cursor: default;
+}
+
+.subnav > #search-bar {
+    border-right: 1px solid rgba(66, 66, 66, 0.218);
+    padding-right: 40px;
+}
+
+.search-bar-container > input {
+    border: 0.5px solid rgba(66, 66, 66, 0.218);
+    outline: none;
+    background-color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.search-bar-container > button {
+    border: none;
+    outline: none;
+    background-color: #FEE58E;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+}
+
+.search-bar-container > button:hover {
+    cursor: pointer;
+}
+
 /* ------------------ FOOTER COMPONENT ------------------ */
 
 .footer {
@@ -119,6 +204,33 @@ body {
     height: 60px;
     background-color: #171C21;
 }
+
+/* ------------------------------------------------------ */
+/* ------------------- SEARCH PAGE ---------------------- */
+/* ------------------------------------------------------ */
+
+
+.results-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2.5%;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 7.5px;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    padding: 2.5%;
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
+}
+
 
 /* ------------------------------------------------------ */
 /* -------------------- HOME PAGE ----------------------- */
