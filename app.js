@@ -114,6 +114,26 @@ app.get("/profile/calaries/:id", (req, res) => {
     })
 })
 
+// App route to get weight information for user
+app.get("/api/weight/:id", (req, res) =>{
+    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
+    })
+})
+
+// App route to get activity information for user
+app.get("/api/activity/:id", (req, res) =>{
+    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
+    })
+});
+
 app.get("/api/session", (req, res) => {
     res.json(req.session)
 })
