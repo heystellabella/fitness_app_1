@@ -8,9 +8,9 @@ export function renderProfileDescription() {
 
     axios
 
-    .get('/api/profile/2', {
-        withCredentials: true
-    })
+    // .get('/api/profile/2', {
+    //     withCredentials: true
+    // })
 
     .get("/api/session")
     .then((response) => {
