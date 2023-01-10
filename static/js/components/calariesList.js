@@ -1,4 +1,4 @@
-import axios from "axios";
+
 
 
 export function renderCalaries() {
@@ -12,17 +12,17 @@ export function renderCalaries() {
     // cal_section.id = 'cal_section'
 
     axios
-
     .get("/api/session")
     .then((response) => {
         console.log(response.data)
         const user_id = response.data.user_id
 
         axios
-            .get(`http://localhost:3000/profile/calaries/${user_id}`)
+            .get(`/profile/calaries/${user_id}`)
             .then((response) => {
                 const lists = response.data
                 console.log(lists)
+                console.log('hello')
 
                 const cal_section = document.createElement('div')
                 cal_section.id = 'cal_section'
@@ -55,5 +55,4 @@ export function renderCalaries() {
                 mainContainer.appendChild(cal_section)   
             
             })   
-            })
-            }
+            })}
