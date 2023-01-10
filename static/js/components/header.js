@@ -1,5 +1,7 @@
 import { renderHome } from "./homeDashboard.js"
 import { renderProfileDescription } from "./profileDescription.js"
+import { renderCalaries } from "./calariesList.js"
+
 import { renderActivityPage } from "./activity.js"
 import { renderWeightPage } from "./weight.js"
 import { renderExerciseSearchResults } from "./exerciseSearchResults.js"
@@ -72,9 +74,13 @@ export function renderHeader() {
                 <li id="my-profile-button"><i class="fa-regular fa-user"></i>My Profile</li>
             </ul>
         </nav>
-
     `
+
     document.getElementById('search-button').addEventListener('click', renderExerciseSearchResults)
+
+
+    document.getElementById('view-calorie-button').addEventListener('click', renderCalaries)
+
     document.getElementById('home-button').addEventListener('click', renderHome)
     document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
     document.getElementById('logout').addEventListener('click', logout)

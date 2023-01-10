@@ -124,13 +124,11 @@ input:focus {
     width: 100%;
     margin: 0;
 }
-
 body {
     display: flex;
     background: rgb(2,0,36);
     background: linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(9,55,121,1) 28%, rgba(0,212,255,1) 100%);
 }
-
 .login-form-container {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
@@ -139,28 +137,23 @@ body {
     height: 300px;
     border-radius: 5px;
 }
-
 #login-form {
     text-align: center;
     padding-top: 20px;
     border: 1px solid #CCC;
 }
-
 input {
     margin: 5px;
     width: 75%;
     height: 25px;
 }
-
 input::placeholder {
     padding-left: 7.5px;
     text-transform: capitalize;
 }
-
 input:focus {
     border: 3px solid #555
 }
-
 .submit {
     width: 77.5%;
     height: 30px;
@@ -171,7 +164,6 @@ input:focus {
     cursor: pointer;
     margin-top: 10px;
 }
-
 #login-form > p {
     margin-top: 30px;
     font-size: 12.5px;
