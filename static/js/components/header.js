@@ -10,11 +10,13 @@ axios
         if (response.data.user_id) {
             renderHeader()
         } else {
+            const f_name = response.data.f_name
             renderHeader()
+
             const subnav = document.getElementById('subnav')
             subnav.remove()
             const logOutState = document.getElementById('logout')
-            logOutState.textContent = 'About'
+            logOutState.textContent = `About`
             
             const mainContainer = document.getElementById('main-container')
             const heroBanner = document.createElement('div')

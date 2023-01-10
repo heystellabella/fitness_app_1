@@ -61,12 +61,13 @@ app.get("/api/profile/:user_id", (req, res) => {
 app.post("/api/login-session", (req, res) => {
     const email = [req.body.email]
     const password = req.body.password
-    const sql = "SELECT user_id, email, password FROM users WHERE email = $1"
+    const sql = "SELECT user_id, email, f_name, password FROM users WHERE email = $1"
     db.query(sql, email).then((dbResult) => {
         if (dbResult.rows.length === 0) {
             res.status(404).json({message: "User not found"})
         } else {
             const user = dbResult.rows[0]
+            console.log(user)
             
             function isValidPassword(password, passwordHash) {
                 return bcrypt.compareSync(password, passwordHash)
@@ -75,10 +76,8 @@ app.post("/api/login-session", (req, res) => {
             if (isValidPassword(password, user.password)) {
                 req.session.email = email
                 req.session.user_id = user.user_id
+                req.session.f_name = user.f_name
                 req.session.save()
-
-                // console.log(req.session)
-                // console.log('the req session is' + req.session, req.session.user_id, user.user_id)
 
                 res.json({message: "Login Successful"})
                 
