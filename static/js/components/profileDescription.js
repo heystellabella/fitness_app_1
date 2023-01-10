@@ -32,7 +32,7 @@ export function renderProfileDescription() {
                 profileDescription.innerHTML = `
                 <div class="main-card-container">
                 <div class="page-title">
-                <h1>Your Profile</h1>
+                    <h1>Your Profile</h1>
                 </div>
                 <div class="gradient-background"></div>
                 <div class="profile-picture"></div>
@@ -87,7 +87,7 @@ export function renderProfileDescription() {
                     responseElement.innerHTML = ''
     
                     axios
-                    .put('/api/accounts/2', data)
+                    .put(`/api/accounts/${user_id}`, data)
                     .then((response) => {
                         responseElementChild.innerHTML = response.data.message;
                         responseElement.appendChild(responseElementChild);
