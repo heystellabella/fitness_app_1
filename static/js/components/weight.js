@@ -1,7 +1,8 @@
 export function renderWeightPage() {
+    console.log("i clicked this")
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
-
+    mainContainer.innerHTML = ""
     // Create div to hold weight data
     const weightContainer = document.createElement("div")
 

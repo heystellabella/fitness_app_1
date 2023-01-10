@@ -86,7 +86,7 @@ export function renderHeader() {
     document.getElementById('home-button').addEventListener('click', renderHome)
     document.getElementById('my-profile-button').addEventListener('click', renderProfileDescription)
     document.getElementById('logout').addEventListener('click', logout)
-    document.getElementById('your-activity-button').addEventListener('click', renderActivityPage)
+    document.getElementById('your-activity-button',).addEventListener('click', renderActivityPage)
     document.getElementById('weight-tracker-button').addEventListener('click', renderWeightPage)
 
     function logout() {

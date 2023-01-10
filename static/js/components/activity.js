@@ -1,7 +1,7 @@
 export function renderActivityPage() {
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
-
+    mainContainer.innerHTML = ""
     // Create div to hold activity data
     const activityContainer = document.createElement("div")
 
