@@ -83,3 +83,5 @@ function submitSignUpForm(event) {
             console.log(error.response.data.message)
         })
 }
+
+

@@ -48,3 +48,4 @@ CREATE TABLE activity_tracker (
     date DATE NOT NULL,
     activities TEXT
 );
+
