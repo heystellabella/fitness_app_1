@@ -6,21 +6,19 @@ import { renderActivityPage } from "./activity.js"
 import { renderWeightPage } from "./weight.js"
 import { renderExerciseSearchResults } from "./exerciseSearchResults.js"
 
-// if session is active, render the header with the logout button
-// if session is not active, render the header with the login and join now buttons
-// if the session is not active the subnav is removed and homepage is rendered
-
 axios
     .get("/api/session")
     .then((response) => {
         if (response.data.user_id) {
             renderHeader()
         } else {
+            const f_name = response.data.f_name
             renderHeader()
+
             const subnav = document.getElementById('subnav')
             subnav.remove()
             const logOutState = document.getElementById('logout')
-            logOutState.textContent = 'About'
+            logOutState.textContent = `About`
             
             const mainContainer = document.getElementById('main-container')
             const heroBanner = document.createElement('div')

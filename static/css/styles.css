@@ -27,7 +27,7 @@ body {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.313);
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     position: fixed;
     top: 30%;
     left: 30%;
@@ -38,6 +38,7 @@ body {
     font-size: 30px;
     color: white;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .call-to-action-button {
@@ -47,6 +48,7 @@ body {
     border-radius: 5px;
     text-decoration: none;
     border: none;
+    font-size: 14px;
 }
 
 
@@ -200,7 +202,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
     height: 60px;
     background-color: #171C21;
 }
