@@ -3,7 +3,6 @@ export function renderFooter() {
     footer.innerHTML = `
         <div id="footer" class="footer">
             <div id="footer-links">
-            hello
             </div>
         </div>
     `

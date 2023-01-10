@@ -11,7 +11,8 @@ axios
     .get('/api/session')
     .then((response) => {
         console.log(response.data)
-        const f_name = response.data.f_name
+        // const f_name = response.data.f_name
+        // NTS: Why cant I pass the f_name variable to the renderHeader function?
         if (response.data.user_id) {
             renderHeader()
             renderWeightPage()
@@ -23,5 +24,6 @@ axios
             renderCalaries()
         } else {
             renderLogOutState()
+            renderFooter()
         }
     })

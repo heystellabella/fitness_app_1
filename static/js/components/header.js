@@ -52,7 +52,7 @@ export function renderHeader() {
                     axios
                     .delete('/api/session')
                     .then((response) => {
-                        window.location.href = "/login.html"
+                        window.location.href = "/"
                     })
             }
 
