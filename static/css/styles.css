@@ -14,7 +14,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 85vh;
+    height: 86.9vh;
 }
 
 #hero-banner-content {
@@ -200,7 +200,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
     height: 60px;
     background-color: #171C21;
 }
