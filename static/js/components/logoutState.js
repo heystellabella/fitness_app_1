@@ -1,4 +1,6 @@
 import { renderLogInForm } from './login.js'
+import { renderSignUpForm } from './signup.js'
+
 
 export function renderLogOutState() {
     console.log('logged out')
@@ -17,7 +19,7 @@ export function renderLogOutState() {
         <li id="about">About</li>
         <li id="home-logo">GoFit</li>
         <div id="cta" class="cta">
-            <li id="cta-join-now"><a href="./sign-up.html">Join Now</li></a>
+            <li id="cta-join-now" class="join-now">Join Now</li>
             <li id="cta-login" class="login">Log In</li>
         </div>
 
@@ -29,6 +31,13 @@ export function renderLogOutState() {
     loginButton.addEventListener('click', () => {
 
         renderLogInForm()
+    })
+
+    const joinNowButton = document.querySelector('.join-now')
+
+    joinNowButton.addEventListener('click', () => {
+
+        renderSignUpForm()
     })
 
     const mainContainer = document.getElementById('main-container')
@@ -50,7 +59,6 @@ export function renderLogOutState() {
     heroBannerContent.appendChild(heroParagraph)
 
     const callToActionButton = document.createElement('a')
-    callToActionButton.href = './sign-up.html'
     callToActionButton.classList.add('call-to-action-button')
     callToActionButton.textContent = 'Create An Account'
     heroBannerContent.appendChild(callToActionButton)
