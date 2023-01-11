@@ -36,12 +36,12 @@ export function renderLogInForm() {
             <input id="email" type="text" name="email" placeholder="email" required /><br>
             <input id="password" type="password" name="password" placeholder="password" required/><br>
             <button class="submit">Log in</button><br>
-            <p>Don't have an account? <span class="sign-up-button">Sign Up</span></p>
+            <p>Don't have an account? <span class="sign-up-link">Sign Up</span></p>
     `;
     
     loginFormContainer.appendChild(loginForm);
 
-    const signUpButton = document.querySelector('.sign-up-button');
+    const signUpButton = document.querySelector('.sign-up-link');
     signUpButton.addEventListener('click', () => {
         renderSignUpForm();
     });

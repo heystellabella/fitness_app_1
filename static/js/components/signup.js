@@ -52,7 +52,7 @@ export function renderSignUpForm() {
                     <button class="submit">Sign Up</button><br>
                 </div>
             </div>
-            <p>Already have an account? <span class="log-in-button">Log in</span></p>
+            <p>Already have an account? <span class="log-in-link">Log in</span></p>
     `
 
     signUpFormContainer.appendChild(signUpForm);
@@ -68,7 +68,7 @@ export function renderSignUpForm() {
         document.getElementById('sign-up-2').style.display = 'none'
     })
 
-    document.querySelector('.log-in-button').addEventListener('click', () => {
+    document.querySelector('.log-in-link').addEventListener('click', () => {
         renderLogInForm()
     })
 

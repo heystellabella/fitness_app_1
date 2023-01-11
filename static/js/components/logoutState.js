@@ -55,11 +55,16 @@ export function renderLogOutState() {
 
     const heroParagraph = document.createElement('p')
     heroParagraph.classList.add('hero-paragraph')
-    heroParagraph.textContent = 'Set Goals. Track Progress. Get Fit.'
+    heroParagraph.textContent = 'Set Goals. Track Progress. Get Fit. With GoFit.'
     heroBannerContent.appendChild(heroParagraph)
 
     const callToActionButton = document.createElement('a')
     callToActionButton.classList.add('call-to-action-button')
     callToActionButton.textContent = 'Create An Account'
+
+    callToActionButton.addEventListener('click', () => {
+        renderSignUpForm()
+    })
+
     heroBannerContent.appendChild(callToActionButton)
 }
