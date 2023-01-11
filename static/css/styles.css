@@ -5,14 +5,63 @@ font-family: 'Jost', sans-serif; - For Logo and Main Nav
 font-family: 'Roboto', sans-serif; - For Everything Else
 */
 
+
+/* ------------------------------------------------------ */
+/* ------------------ GLOBAL STYLES --------------------- */
+/* ------------------------------------------------------ */
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 7.5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f9db6e;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f9db6e;
+}
+
 body {
     background-color: rgb(225, 225, 225);
+}
+
+.hover-underline-animation {
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+  
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: rgb(118, 117, 117);
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+}
+  
+  .hover-underline-animation:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
 }
 
 /* Logout State */
@@ -185,6 +234,7 @@ body {
 
 .subnav > li:hover {
     cursor: pointer;
+
 }
 
 .subnav > li > i {
