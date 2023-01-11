@@ -2,6 +2,19 @@ export function renderActivityPage() {
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
     mainContainer.innerHTML = ""
+    
+    const activityInputContainer = document.createElement("div")
+
+    activityInputContainer.innerHTML = `
+        <form class="activity-input-form" method="POST"> 
+        Date: <input id="date" type="date" placedoler="date" required> <br><br>
+        What activity did you do today? <br>
+        <input id="activity" type="text" placeholder="Activity" required><br><br>
+        <button class="submit">Save</button>
+        </form>
+    `
+
+    mainContainer.appendChild(activityInputContainer)
     // Create div to hold activity data
     const activityContainer = document.createElement("div")
 

@@ -3,6 +3,21 @@ export function renderWeightPage() {
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
     mainContainer.innerHTML = ""
+
+    // Create a div to for the form to input weight
+    const weightInputContainer = document.createElement("div")
+    weightInputContainer.id = "weight-input-form"
+
+    weightInputContainer.innerHTML = `
+        <form class="weight-input-form" method="POST"> 
+            Weight: <input id="weight" type="number" placeholder="Weight" required> kg <br><br>
+            Date: <input id="date" type="date" placedoler="date" required> <br><br>
+            <button class="submit">Save</button>
+        </form>
+    `
+
+    mainContainer.appendChild(weightInputContainer)
+
     // Create div to hold weight data
     const weightContainer = document.createElement("div")
 
