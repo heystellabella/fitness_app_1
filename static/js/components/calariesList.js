@@ -20,37 +20,45 @@ export function renderCalaries() {
         axios
             .get(`/profile/calaries/${user_id}`)
             .then((response) => {
-                const lists = response.data
-                console.log(lists)
+                const list = response.data
+                console.log(list)
                 console.log('hello')
 
                 const cal_section = document.createElement('div')
-                cal_section.id = 'cal_section'
+                cal_section.id = 'cal-section'
 
-                lists.forEach(list=> {
-                console.log(list)
-                const user_id = list.user_id
-                const user_name = list.f_name
+               
+
+                list.forEach(item=> {
+                console.log(item)
+                const user_id = item.user_id
+               
                 console.log(user_id)
-                const date = new Date(list.date)
+                const date = new Date(item.date)
+                console.log(date)
                 let year = date.getFullYear(date)
                 let month = date.getMonth(date)
+                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                let displayMonth = monthNames[month]
+                console.log(month)
                 let day = date.getDay(date)
                 let d = date.getDate()
-                const calories = list.calories
+                const calories = item.calories
+                // const cal_section = document.createElement('div')
 
-                cal_section.innerHTML = `
-                <div class="main-card-container">
-                <div class="page-title">
-                <h1>Calories</h1>
-                </div>
+                cal_section.innerHTML += `
+                
+                <div class="cal-card-container">
                 <div id="cal_rendering">
-                    <h2>User Name: ${user_name}</h2>
-                    <h2>Acitivty Date: ${day} - ${month} - ${year}</h2>
+                   
+                    <h2>Acitivty Date: ${day + 1} - ${displayMonth} - ${year}</h2>
                     <h2>Calaries Consumed: ${calories} Calaries</h2>
                 </div>
                 </div>
-                </div>
+                
+
+                
+               
                 `})
                 mainContainer.appendChild(cal_section)   
             

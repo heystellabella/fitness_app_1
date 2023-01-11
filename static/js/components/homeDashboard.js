@@ -20,6 +20,7 @@ export function renderHome() {
         console.log(response.data)
         const user_id = response.data.user_id
 
+        
             axios
             .get(`/api/profile/${user_id}`)
             .then((response) => {

@@ -426,8 +426,27 @@ body {
     font-weight: 500;
 }
 
+/* calories -- page */
+.cal-card-container {
+    background-color: white;
+    border-radius: 7.5px;
+    width: 95.25%;
+    height: 150px;
+    margin: 30px 25px 30px 25px;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+#cal_rendering {
+    margin: 80px 25px 25px 20px
+}
+#cal_rendering h2 {
+    padding:20px 15px 20px 15px
 
-/* ------------------------------------------------------ */
+}
+
+/* ----------------------------------------------------- */
 /* ------------------ PROFILE PAGE ---------------------- */
 /* ------------------------------------------------------ */
 
@@ -441,6 +460,8 @@ body {
     margin-top: 10px;
     box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
+
+
 
 .page-title {
     font-size: 12px;
