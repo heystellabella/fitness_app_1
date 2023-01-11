@@ -18,7 +18,7 @@ export function renderHeader() {
             header.innerHTML = `
                 <nav id="header-nav">
                     <ul id="mainnav" class="mainnav">
-                        <li id="welcome-message">Lets get it, ${f_name}! 👋</li>
+                        <li id="welcome-message">Lets get it, ${f_name}! <span class="wave-emoji">👋</span></li>
                         <li id="home-logo">GoFit</li>
                         <li id="logout">Logout</li>
                     </ul>
