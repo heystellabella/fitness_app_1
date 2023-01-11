@@ -52,7 +52,7 @@ export function renderSignUpForm() {
                     <button class="submit">Sign Up</button><br>
                 </div>
             </div>
-            <p>Already have an account? <a href="/login.html">Log in</a></p>
+            <p>Already have an account? <span class="log-in-button">Log in</span></p>
     `
 
     signUpFormContainer.appendChild(signUpForm);
@@ -66,6 +66,10 @@ export function renderSignUpForm() {
     document.getElementById('back-button').addEventListener('click', () => {
         document.getElementById('sign-up-1').style.display = 'block'
         document.getElementById('sign-up-2').style.display = 'none'
+    })
+
+    document.querySelector('.log-in-button').addEventListener('click', () => {
+        renderLogInForm()
     })
 
     signUpForm.addEventListener('submit', submitSignUpForm);
