@@ -1,3 +1,5 @@
+import { renderLogInForm } from './login.js'
+
 export function renderLogOutState() {
     console.log('logged out')
 
@@ -16,11 +18,18 @@ export function renderLogOutState() {
         <li id="home-logo">GoFit</li>
         <div id="cta" class="cta">
             <li id="cta-join-now"><a href="./sign-up.html">Join Now</li></a>
-            <li id="cta-login"><a href="./login.html">Log In</li></a>
+            <li id="cta-login" class="login">Log In</li>
         </div>
 
     `
     nav.appendChild(mainnav)
+
+    const loginButton = document.querySelector('.login')
+
+    loginButton.addEventListener('click', () => {
+
+        renderLogInForm()
+    })
 
     const mainContainer = document.getElementById('main-container')
     mainContainer.innerHTML = ''
