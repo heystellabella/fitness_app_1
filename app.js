@@ -115,7 +115,6 @@ app.get("/profile/calaries/:id", (req, res) => {
 })
 
 // post new calories
-
 app.post("/profile/calaries", (req, res) => {
     console.log(req.body)
     const { user_id, date, calories } = req.body;
@@ -254,7 +253,7 @@ app.put("/api/accounts/:id", (req, res) => {
 })
 
 // App route to get weight information for user
-app.get("/api/weight/:id", (req, res) =>{
+app.get("/api/weight/:id", (req, res) => {
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
     const params = [req.params.id]
     db.query(sql, params).then((response) => {
@@ -264,12 +263,40 @@ app.get("/api/weight/:id", (req, res) =>{
 })
 
 // App route to get activity information for user
-app.get("/api/activity/:id", (req, res) =>{
+app.get("/api/activity/:id", (req, res) => {
     const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
     const params = [req.params.id]
     db.query(sql, params).then((response) => {
         // response.rows is an array of objects
         res.json(response.rows) 
+    })
+});
+
+
+// CA - App route to get only the latest activity entry for user
+app.get("/api/latestActivity/:id", (req, res) => {
+    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1 ORDER BY date DESC LIMIT 1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        res.json(response.rows) 
+    })
+})
+
+// CA - App route to get the latest weight entry for user
+app.get("/api/latestWeight/:id", (req, res) => {
+    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1 ORDER BY date DESC LIMIT 1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        res.json(response.rows) 
+    })
+});
+
+// CA - App route to get the latest calorie entry for user
+app.get("/api/latestCalorie/:id", (req, res) => {
+    const sql = "SELECT * FROM calorie_tracker WHERE user_id = $1 ORDER BY date DESC LIMIT 1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        res.json(response.rows)
     })
 });
 
