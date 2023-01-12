@@ -5,18 +5,52 @@ export function renderWeightPage() {
     mainContainer.innerHTML = ""
 
     // Create a div to for the form to input weight
-    const weightInputContainer = document.createElement("div")
-    weightInputContainer.id = "weight-input-form"
+    const weightInputForm = document.createElement("form")
+    weightInputForm.setAttribute('method', 'POST');
+    weightInputForm.id = "weight-input-form"
 
-    weightInputContainer.innerHTML = `
-        <form class="weight-input-form" method="POST"> 
-            Weight: <input id="weight" type="number" placeholder="Weight" required> kg <br><br>
-            Date: <input id="date" type="date" placedoler="date" required> <br><br>
-            <button class="submit">Save</button>
-        </form>
-    `
+    // weightInputForm.innerHTML = `
+    //     <form id="weight-input-form" method="POST"> 
+    //         Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
+    //         Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+    //         <button class="submit">Save</button>
+    //     </form>
+    // `
+    
+    weightInputForm.innerHTML = `
+        Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
+        Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+        <button class="submit">Save</button>`
 
-    mainContainer.appendChild(weightInputContainer)
+    weightInputForm.addEventListener("submit", submitWeightEntry)
+
+    function submitWeightEntry(event) {
+        event.preventDefault()
+
+        const weightInputData = new FormData(weightInputForm);
+        const data = {
+            weight: weightInputData.get("weight"),
+            date: weightInputData.get("date")
+        }
+        console.log(data.date)
+        axios
+            .get("/api/session")
+            .then((response) => {
+                console.log(response)
+                const user_id = response.data.user_id
+                console.log(user_id)
+                axios
+                .post(`/api/weightEntry/${user_id}`, data)
+                .then((response) => {
+                    window.location.href = renderWeightPage()
+                }).catch((error) => {
+                    console.log(error)
+                })
+            })
+
+    }
+
+    mainContainer.appendChild(weightInputForm)
 
     // Create div to hold weight data
     const weightContainer = document.createElement("div")
@@ -27,7 +61,7 @@ export function renderWeightPage() {
     // Appending this to the main container section of the html page.
     mainContainer.appendChild(weightContainer)
     axios
-        .get("api/sessions")
+        .get("/api/session")
         .then((response) => {
             const user_id = response.data.user_id
             axios
