@@ -19,7 +19,6 @@ export function renderHome() {
     .then((response) => {
         console.log(response.data)
         const user_id = response.data.user_id
-
         
             axios
             .get(`/api/profile/${user_id}`)
@@ -70,8 +69,14 @@ export function renderHome() {
                 .get(`/api/latestActivity/${user_id}`)
                 .then((response) => {
 
-                    // const latestActivityEntry = response.data[0].activity
-                    // const latestActivityDate = response.data[0].date
+                    console.log(response.data)
+
+                    const latestActivityEntry = response.data[0].activities
+                    const latestActivityDate = response.data[0].date
+
+                    const slicedActivityDate = latestActivityDate.slice(0, 10).split('-').reverse().join('-')
+                    
+                    console.log(latestActivityEntry)
 
                     const activityCard = document.createElement('div')
                     activityCard.id = 'activity-card'
@@ -83,13 +88,11 @@ export function renderHome() {
                         <div class="activity-card-body">
                             <div class="activity-card-body-header">
                                 <h3>Activity</h3>
-                                <h3>Calories</h3>
-                                <h3>Time</h3>
+                                <h3>Date</h3>
                             </div>
                             <div class="activity-card-body-content">
                                 <h3>${latestActivityEntry}</h3>
-                                <h3>500</h3>
-                                <h3>30 mins</h3>
+                                <h3>${slicedActivityDate}</h3>
                             </div>
                         </div>
                     `
@@ -102,6 +105,8 @@ export function renderHome() {
                 .then((response) => {
                     const latestCalorieEntry = response.data[0].calories
                     const latestCalorieDate = response.data[0].date
+
+                    const slicedCalorieDate = latestCalorieDate.slice(0, 10).split('-').reverse().join('-')
 
                     const calorieCard = document.createElement('div')
                     calorieCard.id = 'calorie-card'
@@ -117,7 +122,7 @@ export function renderHome() {
                             </div>
                             <div class="calorie-card-body-content">
                                 <h3>${latestCalorieEntry}</h3>
-                                <h3>${latestCalorieDate}</h3>
+                                <h3>${slicedCalorieDate}</h3>
                             </div>
                         </div>
                     `
@@ -130,6 +135,8 @@ export function renderHome() {
                 .then((response) => {
                     const latestWeightEntry = response.data[0].weight
                     const latestWeightDate = response.data[0].date
+
+                    const slicedWeightDate = latestWeightDate.slice(0, 10).split('-').reverse().join('-')
 
                     const weightCard = document.createElement('div')
                     weightCard.id = 'weight-card'
@@ -146,7 +153,7 @@ export function renderHome() {
                             </div>
                             <div class="weight-card-body-content">
                                 <h3>${latestWeightEntry}</h3>
-                                <h3>${latestWeightDate}</h3>
+                                <h3>${slicedWeightDate}</h3>
                             </div>
                         </div>
                     `

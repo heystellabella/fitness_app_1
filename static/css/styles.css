@@ -443,7 +443,7 @@ body {
     font-weight: bold;
 }
 
-.activity-card {
+.activity-card, .weight-card, .calorie-card {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -457,13 +457,13 @@ body {
     color: rgb(66, 66, 66);
 }
 
-.activity-card-header {
+.activity-card-header, .weight-card-header, .calorie-card-header {
     border-bottom: 1px solid rgb(243, 242, 242);
     display: flex;
     justify-content: space-between;
 }
 
-.add-activity-button {
+.add-activity-button, .add-weight-button, .add-calorie-button {
     background-color: white;
     border: none;
     font-size: 12px;
@@ -481,7 +481,7 @@ body {
     cursor: pointer;
 }
 
-.activity-card-body {
+.activity-card-body, .weight-card-body, .calorie-card-body {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -498,11 +498,41 @@ body {
     padding: 5%;
 }
 
+.calorie-card-body-header {
+    display: flex;
+    background-color: #69B2DB;
+    height: 125px;
+    width: 100px;
+    border-radius: 7.5px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.weight-card-body-header {
+    display: flex;
+    background-color: #6F4CF9;
+    height: 125px;
+    width: 100px;
+    border-radius: 7.5px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5%;
+}
+
 .activity-card-body-header > * {
     color: white;
 }
 
-.activity-card-body-content {
+.calorie-card-body-header > * {
+    color: white;
+}
+
+.weight-card-body-header > * {
+    color: white;
+}
+
+.activity-card-body-content, .weight-card-body-content, .calorie-card-body-content {
     padding: 5%;
     display: flex;
     flex-direction: column;
