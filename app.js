@@ -114,6 +114,21 @@ app.get("/profile/calaries/:id", (req, res) => {
     })
 })
 
+// post new calories
+
+app.post("/profile/calaries", (req, res) => {
+    console.log(req.body)
+    const { user_id, date, calories } = req.body;
+
+    const sql = `
+         INSERT into calorie_tracker(user_id, date, calories) VALUES($1, $2, $3)`
+
+    db.query(sql, [user_id, date, calories]).then((dbRes) => {
+        res.json({ success: true });
+        });
+
+})
+
 // App route to get weight information for user
 app.get("/api/weight/:id", (req, res) =>{
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"

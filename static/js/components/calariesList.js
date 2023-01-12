@@ -1,12 +1,13 @@
 
 
-
 export function renderCalaries() {
     
     console.log('rendered')
 
     const mainContainer = document.getElementById('main-container');
     mainContainer.innerHTML = '';
+    
+
 
     // const cal_section = document.createElement('div')
     // cal_section.id = 'cal_section'
@@ -16,6 +17,42 @@ export function renderCalaries() {
     .then((response) => {
         console.log(response.data)
         const user_id = response.data.user_id
+
+            //add new calories function
+            const formSection = document.createElement('section')
+            formSection.setAttribute("id","form_section")
+            const form = document.createElement('form')
+            form.innerHTML = `
+                <input type="hidden" name="user_id" value=${user_id}>
+                <label for="date">Date: </label><br>
+                <input type="date" name="date">
+                <label for="calories">Calories: </label><br>
+                <input type="number" name="calories">
+                <button>Submit</button>`
+            form.setAttribute("method","POST")
+            formSection.appendChild(form)
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = {
+                    user_id: formData.get('user_id'),
+                    date: formData.get("date"),
+                    calories: formData.get('calories')
+                }
+
+                console.log(data)
+              
+                // end of new calories posting
+
+                axios
+                    .post('/profile/calaries', data)
+                    .then((response) => {
+                        console.log(response)
+                        renderCalaries()
+                    })
+            })
 
         axios
             .get(`/profile/calaries/${user_id}`)
@@ -60,7 +97,10 @@ export function renderCalaries() {
                 
                
                 `})
-                mainContainer.appendChild(cal_section)   
+
+                mainContainer.appendChild(formSection) 
+                mainContainer.appendChild(cal_section)
+                 
             
             })   
             })}
