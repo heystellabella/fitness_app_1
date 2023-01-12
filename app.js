@@ -139,6 +139,15 @@ app.get("/api/weight/:id", (req, res) =>{
     })
 })
 
+app.post("/api/weightEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO weight_tracker (user_id, weight, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.weight, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
 // App route to get activity information for user
 app.get("/api/activity/:id", (req, res) =>{
     const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"

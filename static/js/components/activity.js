@@ -2,6 +2,20 @@ export function renderActivityPage() {
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
     mainContainer.innerHTML = ""
+    
+    const activityInputForm = document.createElement("div")
+    activityInputForm.id = "activity-input-form"
+
+    activityInputForm.innerHTML = `
+        <form class="activity-input-form" method="POST"> 
+        Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+        What activity did you do today? <br>
+        <input id="activity" type="text" name="activity" placeholder="Activity" required><br><br>
+        <button class="submit">Save</button>
+        </form>
+    `
+
+    mainContainer.appendChild(activityInputForm)
     // Create div to hold activity data
     const activityContainer = document.createElement("div")
 
@@ -11,7 +25,7 @@ export function renderActivityPage() {
     // Appending this to the main container section of the html page.
     mainContainer.appendChild(activityContainer)
     axios
-        .get("api/session")
+        .get("/api/session")
         .then((response) => {
             const user_id = response.data.user_id
             axios
