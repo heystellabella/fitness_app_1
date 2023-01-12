@@ -42,11 +42,13 @@ export function renderWeightPage() {
                 axios
                 .post(`/api/weightEntry/${user_id}`, data)
                 .then((response) => {
-                    window.location.href = renderWeightPage()
+                    window.location.href = '/'
                 }).catch((error) => {
                     console.log(error)
                 })
             })
+
+
 
     }
 
