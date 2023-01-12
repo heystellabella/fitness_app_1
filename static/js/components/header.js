@@ -29,13 +29,13 @@ export function renderHeader() {
                             <button id="search-button" type="submit"><i class="fa-solid fa-search"></i></button>
                         </li>
                         <li class="li-space"></li>
-                        <li id="home-button"><i class="fa-solid fa-house"></i>Home</li>
+                        <li id="home-button" class="hover-underline-animation"><i class="fa-solid fa-house"></i>Home</li>
                         <!-- <li id="add-activity-button"><i class="fa-solid fa-plus"></i>Add Activity</li> -->
-                        <li id="create-group-button"><i class="fa-solid fa-people-group"></i>Groups</li>
-                        <li id="your-activity-button"><i class="fa-solid fa-chart-line"></i>Your Activity</li>
-                        <li id="weight-tracker-button"><i class="fa-solid fa-bullseye"></i>Weight Tracker</li>
-                        <li id="view-calorie-button"><i class="fa-solid fa-heart"></i>Calorie Tracker</li>
-                        <li id="my-profile-button"><i class="fa-regular fa-user"></i>My Profile</li>
+                        <li id="create-group-button" class="hover-underline-animation"><i class="fa-solid fa-people-group"></i>Groups</li>
+                        <li id="your-activity-button" class="hover-underline-animation"><i class="fa-solid fa-chart-line"></i>Your Activity</li>
+                        <li id="weight-tracker-button" class="hover-underline-animation"><i class="fa-solid fa-bullseye"></i>Weight Tracker</li>
+                        <li id="view-calorie-button" class="hover-underline-animation"><i class="fa-solid fa-heart"></i>Calorie Tracker</li>
+                        <li id="my-profile-button" class="hover-underline-animation"><i class="fa-regular fa-user"></i>My Profile</li>
                     </ul>
                 </nav>
             `

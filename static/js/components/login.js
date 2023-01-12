@@ -1,3 +1,5 @@
+import { renderSignUpForm } from './signup.js'
+
 export function renderLogInForm() {
 
     const head = document.getElementsByTagName('head')[0]
@@ -34,10 +36,15 @@ export function renderLogInForm() {
             <input id="email" type="text" name="email" placeholder="email" required /><br>
             <input id="password" type="password" name="password" placeholder="password" required/><br>
             <button class="submit">Log in</button><br>
-            <p>Don't have an account? <a href="/sign-up.html">Sign Up</a></p>
+            <p>Don't have an account? <span class="sign-up-link">Sign Up</span></p>
     `;
     
     loginFormContainer.appendChild(loginForm);
+
+    const signUpButton = document.querySelector('.sign-up-link');
+    signUpButton.addEventListener('click', () => {
+        renderSignUpForm();
+    });
     
     loginForm.addEventListener('submit', submitLoginForm);
     
