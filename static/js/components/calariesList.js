@@ -22,12 +22,14 @@ export function renderCalaries() {
             const formSection = document.createElement('section')
             formSection.setAttribute("id","form_section")
             const form = document.createElement('form')
+            form.setAttribute("id","cal_form")
             form.innerHTML = `
                 <input type="hidden" name="user_id" value=${user_id}>
-                <label for="date">Date: </label><br>
+                <p>Add Calories Burned</p>
                 <input type="date" name="date">
-                <label for="calories">Calories: </label><br>
-                <input type="number" name="calories">
+                <br>
+                <input type="number" name="calories" value='Calories Consumed'>
+                <br>
                 <button>Submit</button>`
             form.setAttribute("method","POST")
             formSection.appendChild(form)
@@ -44,7 +46,7 @@ export function renderCalaries() {
 
                 console.log(data)
               
-                // end of new calories posting
+                
 
                 axios
                     .post('/profile/calaries', data)
@@ -52,6 +54,7 @@ export function renderCalaries() {
                         console.log(response)
                         renderCalaries()
                     })
+            // end of new calories posting
             })
 
         axios
