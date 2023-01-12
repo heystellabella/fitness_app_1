@@ -2,8 +2,9 @@ export function renderActivityPage() {
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
     mainContainer.innerHTML = ""
-    
-    const activityInputForm = document.createElement("div")
+
+    const activityInputForm = document.createElement("form")
+    activityInputForm.setAttribute('method', 'POST');
     activityInputForm.id = "activity-input-form"
 
     activityInputForm.innerHTML = `
@@ -14,6 +15,33 @@ export function renderActivityPage() {
         <button class="submit">Save</button>
         </form>
     `
+    activityInputForm.addEventListener("submit", submitActivityEntry)
+
+    function submitActivityEntry(event) {
+        event.preventDefault()
+
+        const activityInputData = new FormData(activityInputForm);
+        const data = {
+            date: activityInputData.get("date"),
+            activity: activityInputData.get("activity")
+        }
+        console.log(data.date)
+        axios
+            .get("/api/session")
+            .then((response) => {
+                console.log(response)
+                const user_id = response.data.user_id
+                console.log(user_id)
+                axios
+                    .post(`/api/activityEntry/${user_id}`, data)
+                    .then((response) => {
+                        window.location.href = "/"
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+            })
+
+    }
 
     mainContainer.appendChild(activityInputForm)
     // Create div to hold activity data

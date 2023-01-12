@@ -155,7 +155,16 @@ app.get("/api/activity/:id", (req, res) =>{
         // response.rows is an array of objects
         res.json(response.rows) 
     })
-});
+})
+
+app.post("/api/activityEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO activity_tracker (user_id, activities, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.activity, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
 
 app.get("/api/session", (req, res) => {
     res.json(req.session)
