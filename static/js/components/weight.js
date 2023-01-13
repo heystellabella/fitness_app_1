@@ -11,8 +11,8 @@ export function renderWeightPage() {
 
     weightInputForm.innerHTML = `
         <h2>Log your weight here: </h2><br>
-        Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
-        Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
+        Date: <input id="date" type="date" name="date" placedoler="date" required> <br>
+        Weight: <input id="weight" type="number" name="weight" placeholder="Weight in kgs" required> <br>
         <button class="submit">Save</button>`
 
     weightInputForm.addEventListener("submit", submitWeightEntry)

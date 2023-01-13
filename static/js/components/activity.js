@@ -11,9 +11,9 @@ export function renderActivityPage() {
         <h2>Log your activity here: </h2><br>
         <form class="activity-input-form" method="POST"> 
         
-        Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+        Date: <input id="date" type="date" name="date" placedoler="date" required> <br>
         What activity did you do today?
-        <input id="activity" type="text" name="activity" placeholder="Activity" required><br><br>
+        <input id="activity-input-box" type="text" name="activity" placeholder="Activity" required><br>
         <button class="submit">Save</button>
         </form>
     `
@@ -88,7 +88,7 @@ export function renderActivityPage() {
                         // Inputting the newly created div with the Activity and date
                         dailyActivity.innerHTML = `
                         <p>Date: ${slicedActivityDate} <br><br>
-                        Activity: ${activity}</p> <br>
+                        Activity: <br>${activity}</p> <br>
                         
                         <button class="edit-button" id="edit-button-${activity_tracker_id}">Edit</button> 
                         <button class="delete-button" id="delete-button-${activity_tracker_id}">Delete</button>`

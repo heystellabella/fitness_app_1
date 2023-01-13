@@ -668,6 +668,7 @@ body {
     background-color: white;
     border-radius: 7.5px;
     width: 95%;
+    height: 100%;
     margin: 30px 25px 30px 25px;
     font-family: 'Roboto', sans-serif;
     margin-top: 10px;
@@ -675,19 +676,16 @@ body {
     padding: 10px;
 }
 
-.daily-weight-card {
-    height: 100px;
-}
-
-.daily-activity-card {
-    height: 100px;
-}
 
 #weight-input-form, #activity-input-form {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
     border-radius: 7.5px;
     width: 95%;
-    height: 180px;
+    height: 100%;
     margin: 30px 25px 30px 25px;
     font-family: 'Roboto';
     margin-top: 10px;
@@ -695,6 +693,10 @@ body {
     padding: 10px;
 }
 
+#activity-input-box {
+    height:100px;
+    width: 60%
+}
 .edit-button, .delete-button {
     background-color: #FEE58E;
     color: black;
