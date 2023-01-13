@@ -128,6 +128,22 @@ app.post("/profile/calaries", (req, res) => {
 
 })
 
+// get calories left
+
+app.get("/profile/left_calaries/:id/:date", (req, res) => {
+    const id = req.params.id
+    const date = req.params.date
+
+    const sql = `
+    select calorie_goal, date, sum(calories) from users left join calorie_tracker on users.user_id = calorie_tracker.user_id where users.user_id = ${id} and date = ${date}  group by calorie_goal, date; 
+    `
+
+    db.query(sql).then(({ rows }) => {
+        res.json(rows)
+    })
+
+} )
+
 // App route to get weight information for user
 app.get("/api/weight/:id", (req, res) =>{
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
