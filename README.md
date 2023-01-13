@@ -107,3 +107,26 @@ ___
 1. Cleaning/refactor code
     - Adhering to MVC architecture
     - General Tidying (Remove console.logs, comments etc)
+
+
+___
+
+## Challenges & Wins
+
+Stella:
+Clarence: 
+Haden:
+
+___
+
+## How we worked together
+
+___
+
+## Future Features
+
+___
+
+## How to run the app
+1. npm install
+2. npm run start
