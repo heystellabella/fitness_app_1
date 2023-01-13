@@ -747,8 +747,54 @@ body {
     font-size: 12px;
 }
 
+/* ------------------------------------------------------ */
+/* -------------- WEIGHT & ACTIVITY PAGE ---------------- */
+/* ------------------------------------------------------ */
+.daily-activty-card, .daily-weight-card {
+    background-color: white;
+    border-radius: 7.5px;
+    width: 95%;
+    height: 100%;
+    margin: 30px 25px 30px 25px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 10px;
+}
 
 
+#weight-input-form, #activity-input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 7.5px;
+    width: 95%;
+    height: 100%;
+    margin: 30px 25px 30px 25px;
+    font-family: 'Roboto';
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+#activity-input-box {
+    height:100px;
+    width: 60%
+}
+.edit-button, .delete-button {
+    background-color: #FEE58E;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    align-items: end;
+    width: 80px;
+    margin-left: 20px;
+    font-size: 12px;
+}
 
 
 

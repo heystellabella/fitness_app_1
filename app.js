@@ -128,8 +128,6 @@ app.post("/profile/calaries", (req, res) => {
 
 })
 
-// get calories left
-
 app.get("/profile/left_calaries/:id/:date", (req, res) => {
     const id = req.params.id
     const date = req.params.date
@@ -268,7 +266,7 @@ app.put("/api/accounts/:id", (req, res) => {
     }
 })
 
-// App route to get weight information for user
+// SM App route to get weight information for user
 app.get("/api/weight/:id", (req, res) => {
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
     const params = [req.params.id]
@@ -278,7 +276,7 @@ app.get("/api/weight/:id", (req, res) => {
     })
 })
 
-// App route to get activity information for user
+// SM App route to get activity information for user
 app.get("/api/activity/:id", (req, res) => {
     const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
     const params = [req.params.id]
@@ -287,6 +285,68 @@ app.get("/api/activity/:id", (req, res) => {
         res.json(response.rows) 
     })
 });
+
+// SM App route for user to input weight entry
+app.post("/api/weightEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO weight_tracker (user_id, weight, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.weight, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
+// SM App route for user to input activity entry
+app.post("/api/activityEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO activity_tracker (user_id, activities, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.activity, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
+// SM App route to delete weight entry
+app.delete("/api/weight/:id/:weight_tracker_id", (req, res) => {
+    const sql = "DELETE from weight_tracker WHERE (user_id =$1) AND (weight_tracker_id=$2)"
+
+    const params = [req.params.id, req.params.weight_tracker_id]
+
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully deleted from database"})
+    })
+})
+
+// SM App route to edit weight entry
+app.put("/api/weight/:id/:weight_tracker_id", (req, res) => {
+    const sql = "UPDATE weight_tracker SET date=$1, weight=$2 WHERE user_id=$3 AND weight_tracker_id=$4"
+
+    const params = [req.body.date, req.body.weight, req.params.id, req.params.weight_tracker_id]
+
+    db.query(sql, params).then(dbResult => {
+        res.json({message: "Weight data successfully updated."})
+    })
+})
+// SM App route to delete activity entry
+app.delete("/api/activity/:id/:activity_tracker_id", (req, res) => {
+    const sql = "DELETE from activity_tracker WHERE (user_id =$1) AND (activity_tracker_id=$2)"
+
+    const params = [req.params.id, req.params.activity_tracker_id]
+
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully deleted from database"})
+    })
+})
+// SM App route to edit activity entry
+app.put("/api/activity/:id/:activity_tracker_id", (req, res) => {
+    const sql = "UPDATE activity_tracker SET date=$1, activities=$2 WHERE user_id=$3 AND activity_tracker_id=$4"
+
+    const params = [req.body.date, req.body.activity, req.params.id, req.params.activity_tracker_id]
+
+    db.query(sql, params).then(dbResult => {
+        res.json({message: "Activity data successfully updated."})
+    })
+})
 
 // CA - App route to get only the latest activity entry for user
 app.get("/api/latestActivity/:id", (req, res) => {
