@@ -9,17 +9,10 @@ export function renderWeightPage() {
     weightInputForm.setAttribute('method', 'POST');
     weightInputForm.id = "weight-input-form"
 
-    // weightInputForm.innerHTML = `
-    //     <form id="weight-input-form" method="POST"> 
-    //         Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
-    //         Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
-    //         <button class="submit">Save</button>
-    //     </form>
-    // `
-
     weightInputForm.innerHTML = `
-        Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
+        <h2>Log your weight here: </h2><br>
         Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+        Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
         <button class="submit">Save</button>`
 
     weightInputForm.addEventListener("submit", submitWeightEntry)
@@ -33,6 +26,10 @@ export function renderWeightPage() {
             date: weightInputData.get("date")
         }
         console.log(data.date)
+
+
+
+        console.log("better date:", slicedActivityDate)
         axios
             .get("/api/session")
             .then((response) => {
@@ -82,17 +79,20 @@ export function renderWeightPage() {
                         const date = dbResponse[i].date
                         const weight_tracker_id = dbResponse[i].weight_tracker_id
 
+                        const slicedActivityDate = date.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
+
                         console.log("date array is: ", date)
                         console.log("weight array is: ", weight)
 
                         // Creating a new div for each entry
                         const dailyWeight = document.createElement("div")
+                        dailyWeight.setAttribute("class", "daily-weight-card")
 
                         // // Inputting the newly created div with the weight and date
                         dailyWeight.innerHTML = `
-                        <p>On the ${date}, you weighed ${weight}kg.</p>
-                        <button id="edit-button-${weight_tracker_id}">Edit</button> 
-                        <button id="delete-button-${weight_tracker_id}">Delete</button>`
+                        <p>On ${slicedActivityDate}, you weighed ${weight}kg.</p> <br>
+                        <button class="edit-button" id="edit-button-${weight_tracker_id}">Edit</button> 
+                        <button class="delete-button" id="delete-button-${weight_tracker_id}">Delete</button>`
 
                         // Appending each entry to the overall weight container.
                         weightContainer.appendChild(dailyWeight)

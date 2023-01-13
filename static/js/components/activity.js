@@ -8,9 +8,11 @@ export function renderActivityPage() {
     activityInputForm.id = "activity-input-form"
 
     activityInputForm.innerHTML = `
+        <h2>Log your activity here: </h2><br>
         <form class="activity-input-form" method="POST"> 
+        
         Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
-        What activity did you do today? <br>
+        What activity did you do today?
         <input id="activity" type="text" name="activity" placeholder="Activity" required><br><br>
         <button class="submit">Save</button>
         </form>
@@ -77,16 +79,19 @@ export function renderActivityPage() {
                         console.log("date is: ", date)
                         console.log("activity is: ", activity)
 
+                        const slicedActivityDate = date.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
+
                         // Creating a new div for each entry
                         const dailyActivity = document.createElement("div")
+                        dailyActivity.setAttribute("class", "daily-activty-card")
 
                         // Inputting the newly created div with the Activity and date
                         dailyActivity.innerHTML = `
-                        <p>Date: ${date} <br>
-                        Activity: ${activity}</p> 
+                        <p>Date: ${slicedActivityDate} <br><br>
+                        Activity: ${activity}</p> <br>
                         
-                        <button id="edit-button-${activity_tracker_id}">Edit</button> 
-                        <button id="delete-button-${activity_tracker_id}">Delete</button>`
+                        <button class="edit-button" id="edit-button-${activity_tracker_id}">Edit</button> 
+                        <button class="delete-button" id="delete-button-${activity_tracker_id}">Delete</button>`
 
                         // Appending each entry to the overall activity container.
                         activityContainer.appendChild(dailyActivity)
