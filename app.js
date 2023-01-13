@@ -272,7 +272,6 @@ app.get("/api/activity/:id", (req, res) => {
     })
 });
 
-
 // CA - App route to get only the latest activity entry for user
 app.get("/api/latestActivity/:id", (req, res) => {
     const sql = "SELECT * FROM activity_tracker WHERE user_id = $1 ORDER BY date DESC LIMIT 1"

@@ -33,8 +33,9 @@ export function renderHome() {
                 const calorieGoal = response.data.calorie_goal
 
                 profileCard.innerHTML = `
+                <div class="profile-row-1">
                     <div class="profile-card-user-info">
-                        <div class="profile-picture-card">INSERT PROFILE PICTURE HERE</div>
+                        <!-- <div class="profile-picture-card">Insert Profile Picture Here</div> -->
                         <div class="profile-card-user-details">
                             <h2>${f_name} ${l_name}</h2>
                             <h3>@${username}</h3>
@@ -61,10 +62,42 @@ export function renderHome() {
                             <p>Calorie Goal</p>
                         </div>
                     </div>
+                </div>
                 `
                 mainCardContainer.appendChild(profileCard)
 
-                
+
+                axios
+                .get(`/api/latestWeight/${user_id}`)
+                .then((response) => {
+                    const latestWeightEntry = response.data[0].weight
+                    const latestWeightDate = response.data[0].date
+
+                    const slicedWeightDate = latestWeightDate.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
+
+                    const weightCard = document.createElement('div')
+                    weightCard.id = 'weight-card'
+                    weightCard.classList.add('weight-card')
+                    weightCard.innerHTML = `
+                        <div class="weight-card-header">
+                            <h2>Latest Weight <button class="add-weight-button"><i class="fa-solid fa-plus"></i></button> </h2>
+                            
+                        </div>
+                        <div class="weight-card-body">
+                            <div class="weight-card-body-header">
+                                <h3>Weight</h3>
+                                <h3>Date</h3>
+                            </div>
+                            <div class="weight-card-body-content">
+                                <h3>${latestWeightEntry}</h3>
+                                <h3>${slicedWeightDate}</h3>
+                            </div>
+                        </div>
+                    `
+                    profileCard.appendChild(weightCard)
+
+                })
+
                 axios
                 .get(`/api/latestActivity/${user_id}`)
                 .then((response) => {
@@ -74,9 +107,8 @@ export function renderHome() {
                     const latestActivityEntry = response.data[0].activities
                     const latestActivityDate = response.data[0].date
 
-                    const slicedActivityDate = latestActivityDate.slice(0, 10).split('-').reverse().join('-')
+                    const slicedActivityDate = latestActivityDate.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
                     
-                    console.log(latestActivityEntry)
 
                     const activityCard = document.createElement('div')
                     activityCard.id = 'activity-card'
@@ -106,7 +138,7 @@ export function renderHome() {
                     const latestCalorieEntry = response.data[0].calories
                     const latestCalorieDate = response.data[0].date
 
-                    const slicedCalorieDate = latestCalorieDate.slice(0, 10).split('-').reverse().join('-')
+                    const slicedCalorieDate = latestCalorieDate.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
 
                     const calorieCard = document.createElement('div')
                     calorieCard.id = 'calorie-card'
@@ -128,37 +160,6 @@ export function renderHome() {
                     `
 
                     profileCard.appendChild(calorieCard)
-                })
-
-                axios
-                .get(`/api/latestWeight/${user_id}`)
-                .then((response) => {
-                    const latestWeightEntry = response.data[0].weight
-                    const latestWeightDate = response.data[0].date
-
-                    const slicedWeightDate = latestWeightDate.slice(0, 10).split('-').reverse().join('-')
-
-                    const weightCard = document.createElement('div')
-                    weightCard.id = 'weight-card'
-                    weightCard.classList.add('weight-card')
-                    weightCard.innerHTML = `
-                        <div class="weight-card-header">
-                            <h2>Latest Weight <button class="add-weight-button"><i class="fa-solid fa-plus"></i></button> </h2>
-                            
-                        </div>
-                        <div class="weight-card-body">
-                            <div class="weight-card-body-header">
-                                <h3>Weight</h3>
-                                <h3>Date</h3>
-                            </div>
-                            <div class="weight-card-body-content">
-                                <h3>${latestWeightEntry}</h3>
-                                <h3>${slicedWeightDate}</h3>
-                            </div>
-                        </div>
-                    `
-                    profileCard.appendChild(weightCard)
-
                 })
             
             })

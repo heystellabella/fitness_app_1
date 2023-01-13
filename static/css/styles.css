@@ -64,6 +64,10 @@ body {
     transform: translate3d(0, 0.2em, 0);
 }
 
+#main-container {
+    height: 80vh;
+}
+
 /* Logout State */
 .hero-image {
     background-image: url("./assets/hero-image.jpg");
@@ -292,6 +296,11 @@ body {
     align-items: center;
     height: 60px;
     background-color: #171C21;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 /* ------------------------------------------------------ */
@@ -329,10 +338,20 @@ body {
     background-color: #F9F9F9;
 }
 
+.profile-row-1 {
+    display: flex;
+    padding: 2.5%;
+    border: 1px solid rgba(124, 124, 124, 0.218);
+    width: 1000px;
+    height: 225px;
+    justify-content: center;
+
+}
+
 .profile-card {
     display: flex;
-    /* justify-content: space-between; */
     padding: 2.5%;
+    flex-wrap: wrap;
 }
 
 .profile-card h2, h3 {
@@ -352,26 +371,29 @@ body {
 
 .profile-card-user-info {
     display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
+    flex-direction: column;
     background-color: white;
     border-radius: 7.5px;
-
-    margin-right: 20px;
+    margin-left: 30px;
+    width: 30%;
+    height: 175px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
 }
+
 
 .profile-card-user-details {
-    margin-left: 10px;
-    width: 250px;
-    border: 1px solid red;
-}
-
-.profile-card-user-details > * {
-    margin: 5px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
 .profile-card-user-details > h2 {
-    margin-top: 47.5px;
+    width: 150px;
+}
+
+.profile-card-user-details > * {
+    margin-bottom: 5px;
 }
 
 
@@ -379,7 +401,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* padding: 5%; */
+    flex-direction: wrap;
     color: white;
 }
 
