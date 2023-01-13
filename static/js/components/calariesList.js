@@ -48,26 +48,33 @@ export function renderCalaries() {
             console.log(parse_date)
 
             axios
-            .get(`/profile/left_calaries/${user_id}/'2023-01-01'`)
+            .get(`/profile/left_calaries/${user_id}/'2023-01-05'`)
             .then((response) => {
-                console.log(response.data)
+
                 const list = response.data
-                console.log(list[0])
-                const consumed = list[0].sum
-                const goal = list[0].calorie_goal
             
 
                 const left_cal = document.createElement('div')
                 left_cal.setAttribute('id', 'left-cal')
-                if (goal <= consumed) {
-                    left_cal.innerHTML =`
-                            <p>Today is ${currentDate} </p>
-                            <p>You have achieved your goal</p>  
+                if (list.length == 1 ) {
+
+                    const consumed = list[0].sum
+                    const goal = list[0].calorie_goal
+
+                    if (goal <= consumed) {
+                        left_cal.innerHTML =`
+                                <p>Today is ${currentDate} </p>
+                                <p>You have achieved your goal</p>  
+                            `
+                    } else {
+                        left_cal.innerHTML =`
+                        <p>Today is ${currentDate} </p>
+                        <p>You still get ${goal-consumed} calories to burn</p>  
                         `
-                } else {
+                }} else {
                     left_cal.innerHTML =`
                     <p>Today is ${currentDate} </p>
-                    <p>You still get ${goal-consumed} calories to burn</p>  
+                    <p>Start your training</p>  
                     `
                 }
                 formSection.appendChild(left_cal)
