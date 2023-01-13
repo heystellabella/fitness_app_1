@@ -1,4 +1,5 @@
 import { renderSignUpForm } from './signup.js'
+import { renderHome } from './homeDashboard.js' 
 
 export function renderLogInForm() {
 
@@ -88,5 +89,7 @@ export function renderLogInForm() {
             }
     
         })
+
     }
+
 }

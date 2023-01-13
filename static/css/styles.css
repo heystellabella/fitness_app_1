@@ -372,7 +372,7 @@ body {
 .profile-card-user-info {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #feefb8;
     border-radius: 7.5px;
     margin-left: 30px;
     width: 30%;
