@@ -27,9 +27,6 @@ export function renderWeightPage() {
         }
         console.log(data.date)
 
-
-
-        console.log("better date:", slicedActivityDate)
         axios
             .get("/api/session")
             .then((response) => {
@@ -117,7 +114,7 @@ export function renderWeightPage() {
 
                         function editWeightEntry(event) {
                             event.preventDefault()
-
+                            
                             // form to put in new data
                             const weightEditForm = document.createElement("form")
                             weightEditForm.setAttribute('method', 'PUT');
@@ -148,7 +145,7 @@ export function renderWeightPage() {
                                     console.log("error")
                                 })
                             }
-                            dailyWeight.append(weightEditForm)
+                            dailyWeight.appendChild(weightEditForm)
                         }
 
 
