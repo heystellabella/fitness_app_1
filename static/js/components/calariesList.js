@@ -43,19 +43,25 @@ export function renderCalaries() {
             let month = date.getMonth(date) + 1
             let day = date.getDay(date)
             let currentDate = year +'-'+month+'-'+day
-            let parse_date = Date.parse(currentDate)
+            let print_date = date.toDateString()
             console.log(typeof(currentDate))
-            console.log(parse_date)
+            console.log(print_date)
 
+            // try to get year, month and date and merge to formated date
+            const format_year = date.toLocaleString("default", { year: "numeric" })
+            const format_month = date.toLocaleString("default", { month: "2-digit" })
+            const format_day = date.toLocaleString("default", { day: "2-digit" })
+
+            const format_date = format_year + "-" + format_month + "-" + format_day
+           
             axios
-            .get(`/profile/left_calaries/${user_id}/'2023-01-05'`)
+            .get(`/profile/left_calaries/${user_id}/'${format_date}'`)
             .then((response) => {
 
                 const list = response.data
-            
-
                 const left_cal = document.createElement('div')
                 left_cal.setAttribute('id', 'left-cal')
+
                 if (list.length == 1 ) {
 
                     const consumed = list[0].sum
@@ -63,18 +69,18 @@ export function renderCalaries() {
 
                     if (goal <= consumed) {
                         left_cal.innerHTML =`
-                                <p>Today is ${currentDate} </p>
+                                <p>Today is ${print_date} </p>
                                 <p>You have achieved your goal</p>  
                             `
                     } else {
                         left_cal.innerHTML =`
-                        <p>Today is ${currentDate} </p>
+                        <p>Today is ${print_date} </p>
                         <p>You still get ${goal-consumed} calories to burn</p>  
                         `
                 }} else {
                     left_cal.innerHTML =`
-                    <p>Today is ${currentDate} </p>
-                    <p>Start your training</p>  
+                    <p>Today is ${print_date} </p>
+                    <p>Start your training for today</p>  
                     `
                 }
                 formSection.appendChild(left_cal)
