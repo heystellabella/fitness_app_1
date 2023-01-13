@@ -49,9 +49,6 @@ export function renderWeightPage() {
                         console.log(error)
                     })
             })
-
-
-
     }
 
     mainContainer.appendChild(weightInputForm)
@@ -100,17 +97,12 @@ export function renderWeightPage() {
                         // Appending each entry to the overall weight container.
                         weightContainer.appendChild(dailyWeight)
 
-                        // // const edit_button = document.getElementById("edit-button")
                         const delete_button = document.getElementById(`delete-button-${weight_tracker_id}`)
+                        const edit_button = document.getElementById(`edit-button-${weight_tracker_id}`)
 
-                        // // // edit_button.addEventListener("click", editWeightEntry)
+
                         delete_button.addEventListener("click", deleteWeightEntry)
-
-                        // // // function editWeightEntry(event) {
-                        // // //     event.preventDefault()
-
-
-                        // // // }
+                        edit_button.addEventListener("click", editWeightEntry)
 
                         function deleteWeightEntry(event) {
                             event.preventDefault()
@@ -123,7 +115,43 @@ export function renderWeightPage() {
                                 })
                         }
 
-                        
+                        function editWeightEntry(event) {
+                            event.preventDefault()
+
+                            // form to put in new data
+                            const weightEditForm = document.createElement("form")
+                            weightEditForm.setAttribute('method', 'PUT');
+                            weightEditForm.id = "weight-edit-form"
+
+                            weightEditForm.innerHTML = `
+                                Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
+                                Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+                                <button class="submit">Save</button>`
+
+                            weightEditForm.addEventListener("submit", submitWeightEdit)
+
+                            function submitWeightEdit(event) {
+                                event.preventDefault()
+
+                                const newWeightData = new FormData(weightEditForm)
+
+                                const data = {
+                                    date: newWeightData.get("date"),
+                                    weight: newWeightData.get("weight")
+                                }
+
+                                axios
+                                .put(`/api/${user_id}/${weight_tracker_id}`, data)
+                                .then((response) => {
+                                    window.location.href = "/"
+                                }).catch((error) => {
+                                    console.log("error")
+                                })
+                            }
+                            dailyWeight.append(weightEditForm)
+                        }
+
+
                     }
                 })
         })
