@@ -16,7 +16,7 @@ export function renderWeightPage() {
     //         <button class="submit">Save</button>
     //     </form>
     // `
-    
+
     weightInputForm.innerHTML = `
         Weight: <input id="weight" type="number" name="weight" placeholder="Weight" required> kg <br><br>
         Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
@@ -40,14 +40,14 @@ export function renderWeightPage() {
                 const user_id = response.data.user_id
                 console.log(user_id)
                 axios
-                .post(`/api/weightEntry/${user_id}`, data)
-                .then((response) => {
+                    .post(`/api/weightEntry/${user_id}`, data)
+                    .then((response) => {
 
-                    window.location.href = "/"
-                    
-                }).catch((error) => {
-                    console.log(error)
-                })
+                        window.location.href = "/"
+
+                    }).catch((error) => {
+                        console.log(error)
+                    })
             })
 
 
@@ -83,6 +83,7 @@ export function renderWeightPage() {
                         // Storing the weight and date from the db response into variables
                         const weight = dbResponse[i].weight
                         const date = dbResponse[i].date
+                        const weight_tracker_id = dbResponse[i].weight_tracker_id
 
                         console.log("date array is: ", date)
                         console.log("weight array is: ", weight)
@@ -90,12 +91,39 @@ export function renderWeightPage() {
                         // Creating a new div for each entry
                         const dailyWeight = document.createElement("div")
 
-                        // Inputting the newly created div with the weight and date
+                        // // Inputting the newly created div with the weight and date
                         dailyWeight.innerHTML = `
-                        <p>On the ${date}, you weighed ${weight}kg.</p>`
+                        <p>On the ${date}, you weighed ${weight}kg.</p>
+                        <button id="edit-button-${weight_tracker_id}">Edit</button> 
+                        <button id="delete-button-${weight_tracker_id}">Delete</button>`
 
                         // Appending each entry to the overall weight container.
                         weightContainer.appendChild(dailyWeight)
+
+                        // // const edit_button = document.getElementById("edit-button")
+                        const delete_button = document.getElementById(`delete-button-${weight_tracker_id}`)
+
+                        // // // edit_button.addEventListener("click", editWeightEntry)
+                        delete_button.addEventListener("click", deleteWeightEntry)
+
+                        // // // function editWeightEntry(event) {
+                        // // //     event.preventDefault()
+
+
+                        // // // }
+
+                        function deleteWeightEntry(event) {
+                            event.preventDefault()
+                            console.log("delete button clicked")
+                            axios
+                                .delete(`/api/weight/${user_id}/${weight_tracker_id}`)
+                                .then((response) => {
+                                    console.log("deleted")
+                                    window.location.href = "/"
+                                })
+                        }
+
+                        
                     }
                 })
         })

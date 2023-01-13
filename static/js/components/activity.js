@@ -66,26 +66,46 @@ export function renderActivityPage() {
                     // dbResponse is an array of objects. Each object is an entry of the user's date, activity, user id and activity tracker id.
                     const dbResponse = response.data
                     console.log("database response is: ", dbResponse)
+                    console.log("database length is: ", dbResponse.length)
 
                     // Loop through each activity entry of the user to get the date and activity
                     for (let i = 0; i < dbResponse.length; i++) {
                         // Storing the activity and date from the db response into variables
                         const activity = dbResponse[i].activities
                         const date = dbResponse[i].date
-
-                        console.log("date array is: ", date)
-                        console.log("activity array is: ", activity)
+                        const activity_tracker_id = dbResponse[i].activity_tracker_id
+                        console.log("date is: ", date)
+                        console.log("activity is: ", activity)
 
                         // Creating a new div for each entry
                         const dailyActivity = document.createElement("div")
 
                         // Inputting the newly created div with the Activity and date
                         dailyActivity.innerHTML = `
-                        <p>Date: ${date}: <br>
-                        Activity: ${activity}</p>`
+                        <p>Date: ${date} <br>
+                        Activity: ${activity}</p> 
+                        
+                        <button id="edit-button-${activity_tracker_id}">Edit</button> 
+                        <button id="delete-button-${activity_tracker_id}">Delete</button>`
 
                         // Appending each entry to the overall activity container.
                         activityContainer.appendChild(dailyActivity)
+
+                        const delete_button = document.getElementById(`delete-button-${activity_tracker_id}`)
+
+                        delete_button.addEventListener("click", deleteActivityEntry)
+
+                        function deleteActivityEntry(event) {
+                            event.preventDefault()
+                            console.log("delete button clicked")
+                            axios
+                                .delete(`/api/activity/${user_id}/${activity_tracker_id}`)
+                                .then((response) => {
+                                    console.log("deleted")
+                                    window.location.href = "/"
+                                })
+                        }
+
                     }
                 })
         })

@@ -128,43 +128,6 @@ app.post("/profile/calaries", (req, res) => {
 
 })
 
-// App route to get weight information for user
-app.get("/api/weight/:id", (req, res) =>{
-    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
-    })
-})
-
-app.post("/api/weightEntry/:id", (req, res) => {
-    
-    const sql = "INSERT INTO weight_tracker (user_id, weight, date) VALUES ($1, $2, $3)"
-    const params = [req.params.id, req.body.weight, req.body.date]
-    db.query(sql, params).then((dbResult) => {
-        res.json({message: "data successfully inserted into database"})
-    })
-})
-
-// App route to get activity information for user
-app.get("/api/activity/:id", (req, res) =>{
-    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
-    const params = [req.params.id]
-    db.query(sql, params).then((response) => {
-        // response.rows is an array of objects
-        res.json(response.rows) 
-    })
-})
-
-app.post("/api/activityEntry/:id", (req, res) => {
-    
-    const sql = "INSERT INTO activity_tracker (user_id, activities, date) VALUES ($1, $2, $3)"
-    const params = [req.params.id, req.body.activity, req.body.date]
-    db.query(sql, params).then((dbResult) => {
-        res.json({message: "data successfully inserted into database"})
-    })
-})
 
 app.get("/api/session", (req, res) => {
     res.json(req.session)
@@ -252,7 +215,7 @@ app.put("/api/accounts/:id", (req, res) => {
     }
 })
 
-// App route to get weight information for user
+// SM App route to get weight information for user
 app.get("/api/weight/:id", (req, res) => {
     const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
     const params = [req.params.id]
@@ -262,7 +225,7 @@ app.get("/api/weight/:id", (req, res) => {
     })
 })
 
-// App route to get activity information for user
+// SM App route to get activity information for user
 app.get("/api/activity/:id", (req, res) => {
     const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
     const params = [req.params.id]
@@ -272,6 +235,50 @@ app.get("/api/activity/:id", (req, res) => {
     })
 });
 
+// SM App route for user to input weight entry
+app.post("/api/weightEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO weight_tracker (user_id, weight, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.weight, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
+// SM App route for user to input activity entry
+app.post("/api/activityEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO activity_tracker (user_id, activities, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.activity, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
+// SM App route to delete weight entry
+app.delete("/api/weight/:id/:weight_tracker_id", (req, res) => {
+    const sql = "DELETE from weight_tracker WHERE (user_id =$1) AND (weight_tracker_id=$2)"
+
+    const params = [req.params.id, req.params.weight_tracker_id]
+
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully deleted from database"})
+    })
+})
+
+// SM App route to edit weight entry
+
+// SM App route to delete activity entry
+app.delete("/api/activity/:id/:activity_tracker_id", (req, res) => {
+    const sql = "DELETE from activity_tracker WHERE (user_id =$1) AND (activity_tracker_id=$2)"
+
+    const params = [req.params.id, req.params.activity_tracker_id]
+
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully deleted from database"})
+    })
+})
+// SM App route to edit activity entry
 
 // CA - App route to get only the latest activity entry for user
 app.get("/api/latestActivity/:id", (req, res) => {
