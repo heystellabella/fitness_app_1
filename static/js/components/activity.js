@@ -93,7 +93,10 @@ export function renderActivityPage() {
 
                         const delete_button = document.getElementById(`delete-button-${activity_tracker_id}`)
 
+                        const edit_button = document.getElementById(`edit-button-${activity_tracker_id}`)
+
                         delete_button.addEventListener("click", deleteActivityEntry)
+                        edit_button.addEventListener("click", editActivityEntry)
 
                         function deleteActivityEntry(event) {
                             event.preventDefault()
@@ -104,6 +107,43 @@ export function renderActivityPage() {
                                     console.log("deleted")
                                     window.location.href = "/"
                                 })
+                        }
+
+                        function editActivityEntry(event) {
+                            event.preventDefault()
+
+                            // form to put in new data
+                            const activityEditForm = document.createElement("form")
+                            activityEditForm.setAttribute('method', 'PUT');
+                            activityEditForm.id = "activity-edit-form"
+
+                            activityEditForm.innerHTML = `
+                            Date: <input id="date" type="date" name="date" placedoler="date" required> <br><br>
+                            What activity did you do today? <br>
+                            <input id="activity" type="text" name="activity" placeholder="Activity" required><br><br>
+                            <button class="submit">Save</button>`
+
+                            activityEditForm.addEventListener("submit", submitActivityEdit)
+
+                            function submitActivityEdit(event) {
+                                event.preventDefault()
+
+                                const newActivityData = new FormData(activityEditForm)
+
+                                const data = {
+                                    date: newActivityData.get("date"),
+                                    activity: newActivityData.get("activity")
+                                }
+
+                                axios
+                                .put(`/api/activity/${user_id}/${activity_tracker_id}`, data)
+                                .then((response) => {
+                                    window.location.href = "/"
+                                }).catch((error) => {
+                                    console.log("error")
+                                })
+                            }
+                            dailyActivity.append(activityEditForm)
                         }
 
                     }

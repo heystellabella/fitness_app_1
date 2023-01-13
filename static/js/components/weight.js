@@ -141,7 +141,7 @@ export function renderWeightPage() {
                                 }
 
                                 axios
-                                .put(`/api/${user_id}/${weight_tracker_id}`, data)
+                                .put(`/api/weight/${user_id}/${weight_tracker_id}`, data)
                                 .then((response) => {
                                     window.location.href = "/"
                                 }).catch((error) => {
