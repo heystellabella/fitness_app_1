@@ -77,7 +77,8 @@ export function renderCalaries() {
                         <p>Today is ${print_date} </p>
                         <p>You still get ${goal-consumed} calories to burn</p>  
                         `
-                }} else {
+                    }} 
+                else {
                     left_cal.innerHTML =`
                     <p>Today is ${print_date} </p>
                     <p>Start your training for today</p>  
