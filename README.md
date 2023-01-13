@@ -56,7 +56,77 @@ ___
 [ ] Set-up & API/Routes
 1. Set up of folders (Controllers, DB, Static) - ✓
 2. Create Database and Tables - ✓
-3. API Set Up 
-4. Basic routes for each link/page in wireframe (Make sure they link and work)
+3. Basic API Set Up - ✓
+4. Components for each page in wireframe (make sure they link and work) - ✓
 
-✓✓✓
+[ ] Front-end
+1. Coding General Theme and Design - ✓
+
+[ ] Pages
+1. Homepage - Clarence
+- [✓] Front-end
+- [✓] Back-end
+- [✓] Styling
+2. Login Page - Clarence
+- [✓] Front-end
+- [✓] Back-end
+    - Error Handling
+- [✓] Styling
+3. Signup Page - Clarence
+- [✓] Front-end
+- [✓] Back-end
+    - Password Hashing
+    - Error Handling
+- [✓] Styling
+4. Sessions (Login/Logout States) - Clarence
+- [✓] Front-end
+    - Modular Components (Main Nav and Sub Nav)
+- [✓] Back-end
+- [✓] Styling
+4. Profile Update Page - Clarence
+- [✓] Front-end
+- [✓] Back-end
+- [✓] Styling
+5. Activity Page - Stella
+- [ ] Front-end
+- [ ] Back-end
+- [ ] Styling
+6. Calorie Page - Haden
+- [ ] Front-end
+- [ ] Back-end
+- [ ] Styling
+7. Weight Page - Stella
+- [ ] Front-end
+- [ ] Back-end
+- [ ] Styling
+
+[ ] Extras
+1. ExerciseDB API - ✓
+
+[ ] Refactoring - Team
+1. Cleaning/refactor code
+    - Adhering to MVC architecture
+    - General Tidying (Remove console.logs, comments etc)
+
+
+___
+
+## Challenges & Wins
+
+Stella:
+Clarence: 
+Haden:
+
+___
+
+## How we worked together
+
+___
+
+## Future Features
+
+___
+
+## How to run the app
+1. npm install
+2. npm run start

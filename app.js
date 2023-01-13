@@ -128,6 +128,57 @@ app.post("/profile/calaries", (req, res) => {
 
 })
 
+app.get("/profile/left_calaries/:id/:date", (req, res) => {
+    const id = req.params.id
+    const date = req.params.date
+
+    const sql = `
+    select calorie_goal, date, sum(calories) from users left join calorie_tracker on users.user_id = calorie_tracker.user_id where users.user_id = ${id} and date = ${date}  group by calorie_goal, date; 
+    `
+
+    db.query(sql).then(({ rows }) => {
+        res.json(rows)
+    })
+
+} )
+
+// App route to get weight information for user
+app.get("/api/weight/:id", (req, res) =>{
+    const sql = "SELECT * FROM weight_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
+    })
+})
+
+app.post("/api/weightEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO weight_tracker (user_id, weight, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.weight, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
+
+// App route to get activity information for user
+app.get("/api/activity/:id", (req, res) =>{
+    const sql = "SELECT * FROM activity_tracker WHERE user_id = $1"
+    const params = [req.params.id]
+    db.query(sql, params).then((response) => {
+        // response.rows is an array of objects
+        res.json(response.rows) 
+    })
+})
+
+app.post("/api/activityEntry/:id", (req, res) => {
+    
+    const sql = "INSERT INTO activity_tracker (user_id, activities, date) VALUES ($1, $2, $3)"
+    const params = [req.params.id, req.body.activity, req.body.date]
+    db.query(sql, params).then((dbResult) => {
+        res.json({message: "data successfully inserted into database"})
+    })
+})
 
 app.get("/api/session", (req, res) => {
     res.json(req.session)
