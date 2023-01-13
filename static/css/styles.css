@@ -64,13 +64,17 @@ body {
     transform: translate3d(0, 0.2em, 0);
 }
 
+#main-container {
+    height: 80vh;
+}
+
 /* Logout State */
 .hero-image {
     background-image: url("./assets/hero-image.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 86.9vh;
+    height: 88vh;
 }
 
 #hero-banner-content {
@@ -292,6 +296,11 @@ body {
     align-items: center;
     height: 60px;
     background-color: #171C21;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 /* ------------------------------------------------------ */
@@ -329,10 +338,20 @@ body {
     background-color: #F9F9F9;
 }
 
+.profile-row-1 {
+    display: flex;
+    padding: 2.5%;
+    border: 1px solid rgba(151, 151, 151, 0.218);
+    width: 1000px;
+    height: 225px;
+    justify-content: center;
+
+}
+
 .profile-card {
     display: flex;
-    /* justify-content: space-between; */
     padding: 2.5%;
+    flex-wrap: wrap;
 }
 
 .profile-card h2, h3 {
@@ -352,26 +371,30 @@ body {
 
 .profile-card-user-info {
     display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-    background-color: white;
+    flex-direction: column;
+    background-color: #feefb8;
     border-radius: 7.5px;
-
-    margin-right: 20px;
+    margin-left: 30px;
+    width: 30%;
+    height: 175px;
+    font-size: 12px;
+    color: rgb(66, 66, 66);
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
+
 
 .profile-card-user-details {
-    margin-left: 10px;
-    width: 250px;
-    border: 1px solid red;
-}
-
-.profile-card-user-details > * {
-    margin: 5px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
 .profile-card-user-details > h2 {
-    margin-top: 47.5px;
+    width: 150px;
+}
+
+.profile-card-user-details > * {
+    margin-bottom: 5px;
 }
 
 
@@ -379,7 +402,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* padding: 5%; */
+    flex-direction: wrap;
     color: white;
 }
 
@@ -393,6 +416,7 @@ body {
     width: 75px;
     margin-left: 10px;
     text-align: center;
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
 .profile-card-goals i {
@@ -443,7 +467,7 @@ body {
     font-weight: bold;
 }
 
-.activity-card {
+.activity-card, .weight-card, .calorie-card {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -455,15 +479,18 @@ body {
     padding: 2.5%;
     font-size: 12px;
     color: rgb(66, 66, 66);
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
-.activity-card-header {
+
+
+.activity-card-header, .weight-card-header, .calorie-card-header {
     border-bottom: 1px solid rgb(243, 242, 242);
     display: flex;
     justify-content: space-between;
 }
 
-.add-activity-button {
+.add-activity-button, .add-weight-button, .add-calorie-button {
     background-color: white;
     border: none;
     font-size: 12px;
@@ -477,11 +504,11 @@ body {
     color: black;
 }
 
-.add-activity-button:hover {
+.add-activity-button:hover, .add-weight-button:hover, .add-calorie-button:hover {
     cursor: pointer;
 }
 
-.activity-card-body {
+.activity-card-body, .weight-card-body, .calorie-card-body {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -498,11 +525,41 @@ body {
     padding: 5%;
 }
 
+.calorie-card-body-header {
+    display: flex;
+    background-color: #69B2DB;
+    height: 125px;
+    width: 100px;
+    border-radius: 7.5px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.weight-card-body-header {
+    display: flex;
+    background-color: #6F4CF9;
+    height: 125px;
+    width: 100px;
+    border-radius: 7.5px;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5%;
+}
+
 .activity-card-body-header > * {
     color: white;
 }
 
-.activity-card-body-content {
+.calorie-card-body-header > * {
+    color: white;
+}
+
+.weight-card-body-header > * {
+    color: white;
+}
+
+.activity-card-body-content, .weight-card-body-content, .calorie-card-body-content {
     padding: 5%;
     display: flex;
     flex-direction: column;

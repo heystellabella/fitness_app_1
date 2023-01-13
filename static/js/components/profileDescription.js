@@ -91,8 +91,6 @@ export function renderProfileDescription() {
                         responseElementChild.innerHTML = error.response.data.message;
                         responseElement.appendChild(responseElementChild);
     
-                        // DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY DRY
-    
                         if (error.response.data.message === 'Please enter a number for your weight goal.') {
                             const weightGoalInput = document.querySelector('.weight-goal');
                             weightGoalInput.value = '';
