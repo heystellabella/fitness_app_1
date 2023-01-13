@@ -1,3 +1,7 @@
+import { renderActivityPage } from './activity.js'
+import { renderWeightPage } from './weight.js'
+import { renderCalaries } from './calariesList.js'
+
 export function renderHome() {
     const mainContainer = document.getElementById('main-container')
     mainContainer.innerHTML = ''
@@ -52,13 +56,13 @@ export function renderHome() {
                         <div class="activity-goal-profile">
                             <i class="fa-solid fa-chart-line"></i>
                             <p> ${activityGoal} </p>
-                            <p>times p/ week</p>
+                            <p>p/ week</p>
                             <p>Activity Goal</p>
                         </div>
                         <div class="calorie-goal-profile">
                             <i class="fa-solid fa-heart"></i>
                             <p> ${calorieGoal} </p>
-                            <p>kcal p/ day</p>
+                            <p>p/ day</p>
                             <p>Calorie Goal</p>
                         </div>
                     </div>
@@ -96,6 +100,8 @@ export function renderHome() {
                     `
                     profileCard.appendChild(weightCard)
 
+                    document.querySelector('.add-weight-button').addEventListener('click', () => {renderWeightPage()})
+
                 })
 
                 axios
@@ -130,6 +136,8 @@ export function renderHome() {
                     `
                     profileCard.appendChild(activityCard)
 
+                    document.querySelector('.add-activity-button').addEventListener('click', () => {renderActivityPage()})
+
                 })
 
                 axios
@@ -160,6 +168,8 @@ export function renderHome() {
                     `
 
                     profileCard.appendChild(calorieCard)
+
+                    document.querySelector('.add-calorie-button').addEventListener('click', () => {renderCalaries()})
                 })
             
             })

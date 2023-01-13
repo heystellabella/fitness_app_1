@@ -74,7 +74,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 86.9vh;
+    height: 88vh;
 }
 
 #hero-banner-content {
@@ -341,7 +341,7 @@ body {
 .profile-row-1 {
     display: flex;
     padding: 2.5%;
-    border: 1px solid rgba(124, 124, 124, 0.218);
+    border: 1px solid rgba(151, 151, 151, 0.218);
     width: 1000px;
     height: 225px;
     justify-content: center;
@@ -379,6 +379,7 @@ body {
     height: 175px;
     font-size: 12px;
     color: rgb(66, 66, 66);
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
 
@@ -415,6 +416,7 @@ body {
     width: 75px;
     margin-left: 10px;
     text-align: center;
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
 
 .profile-card-goals i {
@@ -477,7 +479,10 @@ body {
     padding: 2.5%;
     font-size: 12px;
     color: rgb(66, 66, 66);
+    box-shadow: 0 4px 2px -2px rgba(146, 146, 146, 0.2);
 }
+
+
 
 .activity-card-header, .weight-card-header, .calorie-card-header {
     border-bottom: 1px solid rgb(243, 242, 242);
@@ -499,7 +504,7 @@ body {
     color: black;
 }
 
-.add-activity-button:hover {
+.add-activity-button:hover, .add-weight-button:hover, .add-calorie-button:hover {
     cursor: pointer;
 }
 
