@@ -135,7 +135,9 @@ export function renderCalaries() {
                 let displayMonth = monthNames[month]
                 console.log(month)
                 let day = date.getDay(date)
+                console.log(day)
                 let d = date.getDate()
+                console.log(d)
                 const calories = item.calories
                 // const cal_section = document.createElement('div')
 
@@ -144,7 +146,7 @@ export function renderCalaries() {
                 <div class="cal-card-container">
                 <div id="cal_rendering">
                    
-                    <h2>Acitivty Date: ${day + 1} - ${displayMonth} - ${year}</h2>
+                    <h2>Acitivty Date: ${d} - ${displayMonth} - ${year}</h2>
                     <h2>Calories Consumed: ${calories} Calories</h2>
                 </div>
                 </div>
