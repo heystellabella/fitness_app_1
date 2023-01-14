@@ -114,6 +114,7 @@ ___
 ## Challenges & Wins
 
 Stella:
+
 Challenges:
 1. CSS styling for best way to display information i.e. weight page.
 2. Getting information from the front end into the back end.
@@ -131,12 +132,13 @@ Clarence:
     - When I challenged myself to add in the ExerciseDB API, I did not need to add this to the API/create a route. As this is being pulled from another server. This is purely a front-end call.
 
 Haden:
+
 Challenges: 
-1. Find suitable CSS styling for section display 
+1. Find suitable CSS styling for section displa. 
 2. Convert data type to match the frond end inputs and SQL table. 
 
 Wins: 
-1. Using aggregate and group by methods in SQL to retrieve information from database. 2. Using CSS grid to design the page
+1. Using aggregate and group by methods in SQL to retrieve information from database. 2. Using CSS grid to design the page.
 ___
 
 ## How we worked together
