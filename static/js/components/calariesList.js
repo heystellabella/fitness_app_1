@@ -145,7 +145,7 @@ export function renderCalaries() {
                 <div id="cal_rendering">
                    
                     <h2>Acitivty Date: ${day + 1} - ${displayMonth} - ${year}</h2>
-                    <h2>Calaries Consumed: ${calories} Calaries</h2>
+                    <h2>Calories Consumed: ${calories} Calories</h2>
                 </div>
                 </div>
                 
