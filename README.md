@@ -123,6 +123,13 @@ Wins:
 - Retrieving information from the backend (db) to display on the page.
 
 Clarence: 
+1. The login and logout state of the app. 
+    - Instead of building out large html elements using innerHTML - I had to refactor my code/components to be modular (Navbar, Subnav). Also, figuring out how to only render certain functions.
+2. Sessions :(
+    - Prior knowledge of sessions using it with Flask. Went down a lot of rabbit holes trying to understand it for Express. Once I discovered that sessions are stored in a new table in database, I created routes in the backend and an axios.get in the front end to pull the session variable to display the logged in users data.
+3. Reinforcing knowledge of the Front-end and Back-end
+    - When I challenged myself to add in the ExerciseDB API, I did not need to add this to the API/create a route. As this is being pulled from another server. This is purely a front-end call.
+
 Haden:
 
 ___
@@ -135,7 +142,9 @@ ___
 ___
 
 ## Future Features
-
+1. Have more data in the homepage - and more meaningful insights (e.g. graphs, calculations of activityEntry minus activityGoal, streaks)
+2. CSS refactoring and layout/design changes
+3. Groups (point system) to gamify the app
 ___
 
 ## How to run the app
