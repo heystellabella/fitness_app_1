@@ -138,7 +138,8 @@ Challenges:
 2. Convert data type to match the frond end inputs and SQL table. 
 
 Wins: 
-1. Using aggregate and group by methods in SQL to retrieve information from database. 2. Using CSS grid to design the page.
+1. Using aggregate and group by methods in SQL to retrieve information from database
+2. Using CSS grid to design the page.
 ___
 
 ## How we worked together
