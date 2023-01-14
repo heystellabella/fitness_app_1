@@ -92,9 +92,9 @@ ___
 - [✓] Back-end
 - [✓] Styling
 6. Calorie Page - Haden
-- [ ] Front-end
-- [ ] Back-end
-- [ ] Styling
+- [✓] Front-end
+- [✓] Back-end
+- [✓] Styling
 7. Weight Page - Stella
 - [✓] Front-end
 - [✓] Back-end
