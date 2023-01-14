@@ -1,5 +1,5 @@
 export function renderWeightPage() {
-    console.log("i clicked this")
+
     // Retrieving the main container element on the html page
     const mainContainer = document.getElementById("main-container")
     mainContainer.innerHTML = ""
@@ -25,14 +25,11 @@ export function renderWeightPage() {
             weight: weightInputData.get("weight"),
             date: weightInputData.get("date")
         }
-        console.log(data.date)
 
         axios
             .get("/api/session")
             .then((response) => {
-                console.log(response)
                 const user_id = response.data.user_id
-                console.log(user_id)
                 axios
                     .post(`/api/weightEntry/${user_id}`, data)
                     .then((response) => {
@@ -64,22 +61,20 @@ export function renderWeightPage() {
                 .get(`/api/weight/${user_id}`)
                 // Using this response to display information on html page.
                 .then((response) => {
-                    console.log(response.data)
+
                     // dbResponse is an array of objects. Each object is an entry of the user's date, weight, user id and weight tracker id.
                     const dbResponse = response.data
-                    console.log("database response is: ", dbResponse)
 
                     // Loop through each weight entry of the user to get the date and weight
                     for (let i = 0; i < dbResponse.length; i++) {
+                        let editOpen = false
+
                         // Storing the weight and date from the db response into variables
                         const weight = dbResponse[i].weight
                         const date = dbResponse[i].date
                         const weight_tracker_id = dbResponse[i].weight_tracker_id
 
                         const slicedActivityDate = date.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
-
-                        console.log("date array is: ", date)
-                        console.log("weight array is: ", weight)
 
                         // Creating a new div for each entry
                         const dailyWeight = document.createElement("div")
@@ -103,18 +98,18 @@ export function renderWeightPage() {
 
                         function deleteWeightEntry(event) {
                             event.preventDefault()
-                            console.log("delete button clicked")
                             axios
                                 .delete(`/api/weight/${user_id}/${weight_tracker_id}`)
                                 .then((response) => {
-                                    console.log("deleted")
                                     window.location.href = "/"
                                 })
                         }
 
                         function editWeightEntry(event) {
                             event.preventDefault()
-                            
+                            if (editOpen) {
+                                return
+                            }
                             // form to put in new data
                             const weightEditForm = document.createElement("form")
                             weightEditForm.setAttribute('method', 'PUT');
@@ -146,8 +141,8 @@ export function renderWeightPage() {
                                 })
                             }
                             dailyWeight.appendChild(weightEditForm)
+                            editOpen = true
                         }
-
 
                     }
                 })

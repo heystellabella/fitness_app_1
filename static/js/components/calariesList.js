@@ -3,21 +3,17 @@
 
 
 export function renderCalaries() {
-    
-    console.log('rendered')
 
     const mainContainer = document.getElementById('main-container');
     mainContainer.innerHTML = '';
     
-
-
     // const cal_section = document.createElement('div')
     // cal_section.id = 'cal_section'
 
     axios
     .get("/api/session")
     .then((response) => {
-        console.log(response.data)
+     
         const user_id = response.data.user_id
 
             //add new calories function
@@ -44,8 +40,6 @@ export function renderCalaries() {
             let day = date.getDay(date)
             let currentDate = year +'-'+month+'-'+day
             let print_date = date.toDateString()
-            console.log(typeof(currentDate))
-            console.log(print_date)
 
             // try to get year, month and date and merge to formated date
             const format_year = date.toLocaleString("default", { year: "numeric" })
@@ -98,12 +92,9 @@ export function renderCalaries() {
                     calories: formData.get('calories')
                 }
 
-                console.log(data)
-
                 axios
                     .post('/profile/calaries', data)
                     .then((response) => {
-                        console.log(response)
                         renderCalaries()
                     })
             // end of new calories posting
@@ -113,30 +104,20 @@ export function renderCalaries() {
             .get(`/profile/calaries/${user_id}`)
             .then((response) => {
                 const list = response.data
-                console.log(list)
-                console.log('hello')
 
                 const cal_section = document.createElement('div')
                 cal_section.id = 'cal-section'
 
-               
-
                 list.forEach(item=> {
-                console.log(item)
                 const user_id = item.user_id
-               
-                console.log(user_id)
                 const date = new Date(item.date)
-                console.log(date)
                 let year = date.getFullYear(date)
                 let month = date.getMonth(date)
                 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 let displayMonth = monthNames[month]
-                console.log(month)
                 let day = date.getDay(date)
                 let d = date.getDate()
                 const calories = item.calories
-                // const cal_section = document.createElement('div')
 
                 cal_section.innerHTML += `
                 
@@ -147,15 +128,11 @@ export function renderCalaries() {
                     <h2>Calaries Consumed: ${calories} Calaries</h2>
                 </div>
                 </div>
-                
 
-                
-               
                 `})
 
                 mainContainer.appendChild(formSection) 
                 mainContainer.appendChild(cal_section)
                  
-            
             })   
             })}

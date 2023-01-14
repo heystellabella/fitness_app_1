@@ -98,7 +98,6 @@ export function renderSignUpForm() {
         axios
             .post('/api/accounts', data)
             .then((response) => {
-                console.log(response.data)
                 renderLogInForm()
             })
             .catch((error) => {

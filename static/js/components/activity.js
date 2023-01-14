@@ -27,13 +27,13 @@ export function renderActivityPage() {
             date: activityInputData.get("date"),
             activity: activityInputData.get("activity")
         }
-        console.log(data.date)
+       
         axios
             .get("/api/session")
             .then((response) => {
-                console.log(response)
+     
                 const user_id = response.data.user_id
-                console.log(user_id)
+    
                 axios
                     .post(`/api/activityEntry/${user_id}`, data)
                     .then((response) => {
@@ -64,11 +64,9 @@ export function renderActivityPage() {
                 .get(`/api/activity/${user_id}`)
                 // Using this response to display information on html page.
                 .then((response) => {
-                    console.log(response.data)
+
                     // dbResponse is an array of objects. Each object is an entry of the user's date, activity, user id and activity tracker id.
                     const dbResponse = response.data
-                    console.log("database response is: ", dbResponse)
-                    console.log("database length is: ", dbResponse.length)
 
                     // Loop through each activity entry of the user to get the date and activity
                     for (let i = 0; i < dbResponse.length; i++) {
@@ -76,8 +74,6 @@ export function renderActivityPage() {
                         const activity = dbResponse[i].activities
                         const date = dbResponse[i].date
                         const activity_tracker_id = dbResponse[i].activity_tracker_id
-                        console.log("date is: ", date)
-                        console.log("activity is: ", activity)
 
                         const slicedActivityDate = date.slice(0, 10).split('-').reverse().join('-').replace('-', '/').replace('-', '/')
 
@@ -105,11 +101,10 @@ export function renderActivityPage() {
 
                         function deleteActivityEntry(event) {
                             event.preventDefault()
-                            console.log("delete button clicked")
+   
                             axios
                                 .delete(`/api/activity/${user_id}/${activity_tracker_id}`)
                                 .then((response) => {
-                                    console.log("deleted")
                                     window.location.href = "/"
                                 })
                         }

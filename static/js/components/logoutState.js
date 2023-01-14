@@ -3,7 +3,6 @@ import { renderSignUpForm } from './signup.js'
 
 
 export function renderLogOutState() {
-    console.log('logged out')
 
     const header = document.getElementById('header-container')
 

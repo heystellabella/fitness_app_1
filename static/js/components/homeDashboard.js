@@ -21,13 +21,13 @@ export function renderHome() {
     axios
     .get("/api/session")
     .then((response) => {
-        console.log(response.data)
+
         const user_id = response.data.user_id
         
             axios
             .get(`/api/profile/${user_id}`)
             .then((response) => {
-                console.log(response.data)
+
                 const f_name = response.data.f_name
                 const l_name = response.data.l_name
                 const username = response.data.username
@@ -107,8 +107,6 @@ export function renderHome() {
                 axios
                 .get(`/api/latestActivity/${user_id}`)
                 .then((response) => {
-
-                    console.log(response.data)
 
                     const latestActivityEntry = response.data[0].activities
                     const latestActivityDate = response.data[0].date

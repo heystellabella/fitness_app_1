@@ -88,17 +88,17 @@ ___
 - [✓] Back-end
 - [✓] Styling
 5. Activity Page - Stella
-- [ ] Front-end
-- [ ] Back-end
-- [ ] Styling
+- [✓] Front-end
+- [✓] Back-end
+- [✓] Styling
 6. Calorie Page - Haden
 - [ ] Front-end
 - [ ] Back-end
 - [ ] Styling
 7. Weight Page - Stella
-- [ ] Front-end
-- [ ] Back-end
-- [ ] Styling
+- [✓] Front-end
+- [✓] Back-end
+- [✓] Styling
 
 [ ] Extras
 1. ExerciseDB API - ✓
@@ -114,13 +114,24 @@ ___
 ## Challenges & Wins
 
 Stella:
+Challenges:
+- CSS styling for best way to display information i.e. weight page.
+- Getting information from the front end into the back end.
+
+Wins:
+- CSS styling for consistency.
+- Retrieving information from the backend (db) to display on the page.
+
 Clarence: 
 Haden:
 
 ___
 
 ## How we worked together
-
+- Planning sessions using Figma to wireframe and storyboard
+- Divvying up work using Trello to outline tasks 
+- Constant communication using Slack instant messaging
+- Zoom calls to code together/debug/help eachother
 ___
 
 ## Future Features

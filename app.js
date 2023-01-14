@@ -86,12 +86,7 @@ app.post("/api/login-session", (req, res) => {
                 req.session.email = email
                 req.session.user_id = user.user_id
                 req.session.f_name = user.f_name
-
-                console.log(req.session.user_id)
-                console.log(req.session.f_name)
-
                 req.session.save()
-
 
                 res.json({message: "Login Successful"})
 

@@ -7,8 +7,7 @@ import { renderActivityPage } from './activity.js'
 
 
 export function renderHeader() {
-    console.log('logged in')
-
+    
     axios
         .get('/api/session')
         .then((response) => {

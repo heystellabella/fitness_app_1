@@ -9,7 +9,7 @@ export function renderProfileDescription() {
     axios
     .get("/api/session")
     .then((response) => {
-        console.log(response.data)
+
         const user_id = response.data.user_id
 
         axios
@@ -103,7 +103,7 @@ export function renderProfileDescription() {
                 submitProfilePicture.addEventListener('click', uploadProfilePicture);
     
                 function uploadProfilePicture(event) {
-                    console.log('clicked')
+
                     event.preventDefault();
                     // const userDetails = document.getElementById('user-details');
                     // const profilePictureFormData = new FormData(userDetails);
