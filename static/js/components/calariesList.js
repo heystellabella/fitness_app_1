@@ -71,7 +71,8 @@ export function renderCalaries() {
                         <p>Today is ${print_date} </p>
                         <p>You still get ${goal-consumed} calories to burn</p>  
                         `
-                }} else {
+                    }} 
+                else {
                     left_cal.innerHTML =`
                     <p>Today is ${print_date} </p>
                     <p>Start your training for today</p>  
@@ -116,7 +117,9 @@ export function renderCalaries() {
                 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 let displayMonth = monthNames[month]
                 let day = date.getDay(date)
+                console.log(day)
                 let d = date.getDate()
+                console.log(d)
                 const calories = item.calories
 
                 cal_section.innerHTML += `
@@ -124,8 +127,8 @@ export function renderCalaries() {
                 <div class="cal-card-container">
                 <div id="cal_rendering">
                    
-                    <h2>Acitivty Date: ${day + 1} - ${displayMonth} - ${year}</h2>
-                    <h2>Calaries Consumed: ${calories} Calaries</h2>
+                    <h2>Acitivty Date: ${d} - ${displayMonth} - ${year}</h2>
+                    <h2>Calories Consumed: ${calories} Calories</h2>
                 </div>
                 </div>
 
